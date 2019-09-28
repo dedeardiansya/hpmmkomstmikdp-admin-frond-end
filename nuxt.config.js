@@ -1,3 +1,4 @@
+const baseApiURL = process.env.BASE_API_URL || 'http://localhost:5000/api'
 module.exports = {
   mode: 'universal',
   head: {
@@ -13,12 +14,15 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  loading: { color: '#fff' },
+  loading: { color: '#666ee8' },
   css: ['~/assets/fonts/Roboto/Roboto.css'],
   plugins: [],
   buildModules: ['@nuxtjs/eslint-module'],
   modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/pwa'],
-  axios: {},
+  axios: {
+    baseURL: baseApiURL,
+    progress: false
+  },
   build: {
     extend(config, ctx) {}
   }
