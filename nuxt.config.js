@@ -24,7 +24,10 @@ module.exports = {
     'izitoast/dist/css/iziToast.css',
     '~/assets/fonts/ionicon/css/ionicons.css'
   ],
-  plugins: [{ src: '~/plugins/mixins/izitoast', ssr: false }],
+  plugins: [
+    { src: '~/plugins/mixins/izitoast', ssr: false },
+    { src: '~/plugins/vuejs-datepicker', ssr: false }
+  ],
   buildModules: ['@nuxtjs/eslint-module'],
   modules: [
     'bootstrap-vue/nuxt',
