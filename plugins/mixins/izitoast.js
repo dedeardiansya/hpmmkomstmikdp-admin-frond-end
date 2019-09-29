@@ -4,12 +4,7 @@ import iziToast from 'izitoast'
 Vue.mixin({
   computed: {
     $toast() {
-      const theme = () => {
-        if (!process.server) {
-          return window.$nuxt.$store.getters['theme/darkTheme']
-        }
-        return false
-      }
+      const theme = () => 'light'
 
       const colors = {
         primary: '#666ee8',
