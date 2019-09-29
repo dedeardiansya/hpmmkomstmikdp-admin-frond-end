@@ -22,7 +22,12 @@ module.exports = {
   ],
   plugins: [{ src: '~/plugins/mixins/izitoast', ssr: false }],
   buildModules: ['@nuxtjs/eslint-module'],
-  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/pwa'],
+  modules: [
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa',
+    'cookie-universal-nuxt'
+  ],
   axios: {
     baseURL: baseApiURL,
     progress: false
