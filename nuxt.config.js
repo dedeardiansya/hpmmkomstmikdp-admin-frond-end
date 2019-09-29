@@ -23,7 +23,7 @@ module.exports = {
     '~/assets/fonts/Roboto/Roboto.css',
     'izitoast/dist/css/iziToast.css',
     '~/assets/fonts/ionicon/css/ionicons.css',
-    'quill/dist/quill.bubble.css'
+    'quill/dist/quill.snow.css'
   ],
   plugins: [
     { src: '~/plugins/mixins/izitoast', ssr: false },
