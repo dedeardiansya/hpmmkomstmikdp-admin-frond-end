@@ -9,9 +9,9 @@
             </router-link>
           </div>
           <div class="ml-auto">
-            <b-dropdown text="Dede ard..." right>
-              <b-dd-header>Dede ardiansya</b-dd-header>
-              <b-dropdown-item>Logout</b-dropdown-item>
+            <b-dropdown :text="profile ? profile.name : ''" right>
+              <b-dd-header>{{ profile ? profile.email : '' }}</b-dd-header>
+              <b-dropdown-item @click="logout">Logout</b-dropdown-item>
             </b-dropdown>
           </div>
         </div>
@@ -34,6 +34,18 @@ export default {
   data() {
     return {
       Logo
+    }
+  },
+  computed: {
+    profile() {
+      return this.$store.getters.profile
+    }
+  },
+  methods: {
+    logout() {
+      this.$cookies.remove('auth_token')
+      this.$store.commit('SET_AUTH', null)
+      this.$router.push('/login')
     }
   }
 }
