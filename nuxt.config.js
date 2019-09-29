@@ -15,8 +15,8 @@ module.exports = {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   loading: { color: '#666ee8' },
-  css: ['~/assets/fonts/Roboto/Roboto.css'],
-  plugins: [],
+  css: ['~/assets/fonts/Roboto/Roboto.css', 'izitoast/dist/css/iziToast.css'],
+  plugins: [{ src: '~/plugins/mixins/izitoast', ssr: false }],
   buildModules: ['@nuxtjs/eslint-module'],
   modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/pwa'],
   axios: {
