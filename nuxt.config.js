@@ -22,10 +22,12 @@ module.exports = {
   css: [
     '~/assets/fonts/Roboto/Roboto.css',
     'izitoast/dist/css/iziToast.css',
-    '~/assets/fonts/ionicon/css/ionicons.css'
+    '~/assets/fonts/ionicon/css/ionicons.css',
+    'quill/dist/quill.bubble.css'
   ],
   plugins: [
     { src: '~/plugins/mixins/izitoast', ssr: false },
+    { src: '~/plugins/vue-quill', ssr: false },
     { src: '~/plugins/vuejs-datepicker', ssr: false }
   ],
   buildModules: ['@nuxtjs/eslint-module'],
