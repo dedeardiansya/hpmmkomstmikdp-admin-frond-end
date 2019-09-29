@@ -8,6 +8,7 @@
 </template>
 <script>
 export default {
-  layout: 'app'
+  layout: 'app',
+  middleware: 'isLogin'
 }
 </script>
