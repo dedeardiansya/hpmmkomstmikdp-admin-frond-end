@@ -20,7 +20,9 @@
         class="mb-4 mt-2"
       />
 
-      <b-button type="submit" variant="primary">Register</b-button>
+      <b-button type="submit" variant="primary">{{
+        loading ? 'Loading' : 'Register'
+      }}</b-button>
       <router-link to="/login" class="btn btn-secondary">Login</router-link>
     </b-form>
   </div>
@@ -34,13 +36,24 @@ export default {
         email: '',
         password: '',
         name: ''
-      }
+      },
+      loading: false
     }
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault()
-      alert(JSON.stringify(this.form))
+      this.register(this.form)
+    },
+    async register(data) {
+      this.loading = true
+      try {
+        const req = await this.$axios.post('/user/register', data)
+        console.log(req)
+      } catch (e) {
+        console.log(e.response.data)
+      }
+      this.loading = false
     }
   }
 }
