@@ -14,6 +14,10 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+  router: {
+    linkActiveClass: 'active',
+    middleware: ['fresh-auth']
+  },
   loading: { color: '#666ee8' },
   css: [
     '~/assets/fonts/Roboto/Roboto.css',
