@@ -49,9 +49,16 @@ export default {
       this.loading = true
       try {
         const req = await this.$axios.post('/user/register', data)
-        console.log(req)
+        this.$router.push('/login')
+        this.$toast.success(req.data.message)
       } catch (e) {
-        console.log(e.response.data)
+        let mess
+        if (e.response) {
+          mess = e.response.data.message
+        } else {
+          mess = e.message
+        }
+        this.$toast.danger(mess)
       }
       this.loading = false
     }
