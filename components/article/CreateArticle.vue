@@ -46,7 +46,7 @@ export default {
             headers: { authorization: 'bearer ' + token }
           }
         )
-        this.$router.push(`/article/${article.slug}/edit`)
+        this.$router.push(`/article/${article.slug}`)
         this.$toast.success(message)
       } catch (e) {
         let mess
