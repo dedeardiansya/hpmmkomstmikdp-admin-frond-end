@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="bg-white">
     <div class="top py-3">
       <div class="container-fluid">
         <div class="d-flex">

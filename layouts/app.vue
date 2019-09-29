@@ -1,5 +1,5 @@
 <template>
-  <div class="app-layout">
+  <div class="app-layout bg-light">
     <app-navbar />
     <div class="p-2" />
     <nuxt />
