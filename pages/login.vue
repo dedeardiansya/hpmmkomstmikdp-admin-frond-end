@@ -44,6 +44,10 @@ export default {
       this.loading = true
       try {
         const req = await this.$axios.post('/user/login', data)
+        this.$router.push('/')
+        this.$cookies.set('auth_token', req.data.data.token, {
+          maxAge: 60 * 60 * 24 * 7
+        })
         this.$toast.success(req.data.message)
       } catch (e) {
         let mess
