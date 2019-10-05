@@ -38,16 +38,12 @@ export default {
       if (!token) return null
       this.loading = true
 
+      const options = { headers: { authorization: 'bearer ' + token } }
+
       try {
-        const { article, message } = await this.$axios.$post(
-          '/article/create',
-          { title },
-          {
-            headers: { authorization: 'bearer ' + token }
-          }
-        )
-        this.$router.push(`/article/${article.slug}`)
-        this.$toast.success(message)
+        const res = await this.$axios.$post('/article', { title }, options)
+        this.$router.push(`/article/${res.slug}`)
+        this.$toast.success(res.message)
       } catch (e) {
         let mess
         if (e.response) {
