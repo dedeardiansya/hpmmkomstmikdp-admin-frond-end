@@ -46,10 +46,10 @@ export default {
       try {
         const req = await this.$axios.$post('/user/login', data)
         this.$router.push('/')
-        this.$cookies.set('auth_token', req.user.token, {
+        this.$cookies.set('auth_token', req.token, {
           maxAge: 60 * 60 * 24 * 7
         })
-        this.$toast.success(req.data.message)
+        this.$toast.success(req.message)
       } catch (e) {
         let mess
         if (e.response) {
