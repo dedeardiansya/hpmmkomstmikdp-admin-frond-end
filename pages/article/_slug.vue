@@ -13,9 +13,14 @@ export default {
   components: {
     EditArticle
   },
-  async asyncData({ params, error, $axios }) {
+  async asyncData({ params, error, $axios, app }) {
+    const token = app.$cookies.get('auth_token')
+    if (!token) return error({ statusCode: 404 })
+    const options = {
+      headers: { authorization: 'bearer ' + token }
+    }
     try {
-      const { article } = await $axios.$get(`/article/${params.slug}`)
+      const { article } = await $axios.$get(`/article/${params.slug}`, options)
       return { article }
     } catch (e) {
       error({ statusCode: 404 })
