@@ -44,7 +44,7 @@ export default {
     async login(data) {
       this.loading = true
       try {
-        const req = await this.$axios.$post('/user/login', data)
+        const req = await this.$axios.$post('/auth/login', data)
         this.$router.push('/')
         this.$cookies.set('auth_token', req.token, {
           maxAge: 60 * 60 * 24 * 7

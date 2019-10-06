@@ -49,7 +49,7 @@ export default {
     async register(data) {
       this.loading = true
       try {
-        const req = await this.$axios.$post('/user/register', data)
+        const req = await this.$axios.$post('/auth/register', data)
         this.$router.push('/login')
         this.$toast.success(req.message)
       } catch (e) {
