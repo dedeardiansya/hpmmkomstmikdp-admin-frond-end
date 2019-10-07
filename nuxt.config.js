@@ -15,7 +15,7 @@ module.exports = {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   router: {
-    linkActiveClass: 'active',
+    linkExactActiveClass: 'active',
     middleware: ['fresh-auth']
   },
   loading: { color: '#666ee8' },
