@@ -1,31 +1,34 @@
 <template>
-  <div>
-    <b-form @submit="onSubmit">
-      <b-form-input
-        v-model="form.name"
-        type="text"
-        placeholder="Nama"
-        class="mb-4 mt-2"
-      />
-      <b-form-input
-        v-model="form.email"
-        type="email"
-        placeholder="Alamat Email"
-        class="mb-4 mt-2"
-      />
-      <b-form-input
-        v-model="form.password"
-        type="password"
-        placeholder="Password"
-        class="mb-4 mt-2"
-      />
-
-      <b-button type="submit" variant="primary">{{
-        loading ? 'Loading' : 'Register'
-      }}</b-button>
-      <router-link to="/login" class="btn btn-secondary">Login</router-link>
-    </b-form>
-  </div>
+  <form>
+    <base-input
+      v-model="form.name"
+      class="input-group-alternative mb-3"
+      placeholder="Name"
+      addon-left-icon="ni ni-circle-08"
+    />
+    <base-input
+      v-model="form.email"
+      class="input-group-alternative mb-3"
+      placeholder="Email"
+      addon-left-icon="ni ni-email-83"
+    />
+    <base-input
+      v-model="form.password"
+      class="input-group-alternative"
+      placeholder="Password"
+      type="password"
+      addon-left-icon="ni ni-lock-circle-open"
+    />
+    <div class="text-center">
+      <base-button type="primary" block :disabled="loading" @click="onSubmit">{{
+        btnText
+      }}</base-button>
+      <hr />
+      <router-link to="/login" class="text-primary"
+        ><small>Sign in</small></router-link
+      >
+    </div>
+  </form>
 </template>
 <script>
 export default {
@@ -34,22 +37,24 @@ export default {
   data() {
     return {
       form: {
+        name: '',
         email: '',
-        password: '',
-        name: ''
+        password: ''
       },
       loading: false
     }
   },
+  computed: {
+    btnText() {
+      return this.loading ? 'Loading' : 'Sign up'
+    }
+  },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault()
-      this.register(this.form)
-    },
-    async register(data) {
+    async onSubmit(e) {
+      e.preventDefault()
       this.loading = true
       try {
-        const req = await this.$axios.$post('/auth/register', data)
+        const req = await this.$axios.$post('/auth/register', this.form)
         this.$router.push('/login')
         this.$toast.success(req.message)
       } catch (e) {
