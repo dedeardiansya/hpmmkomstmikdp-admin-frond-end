@@ -20,7 +20,10 @@ export default {
       headers: { authorization: 'bearer ' + token }
     }
     try {
-      const { article } = await $axios.$get(`/article/${params.slug}`, options)
+      const { article } = await $axios.$get(
+        `/admin/article/${params.slug}`,
+        options
+      )
       return { article }
     } catch (e) {
       error({ statusCode: 404 })
