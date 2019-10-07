@@ -1,7 +1,7 @@
 <template>
   <div class="auth-layout" :style="'background-image: url(' + Background + ')'">
-    <div class="container py-8">
-      <div class="row justify-content-center">
+    <div class="container py-5">
+      <div class="row justify-content-center mb-3">
         <div class="col-lg-5 col-md-7">
           <div class="card bg-secondary shadow border-0">
             <div class="card-body px-lg-5 py-lg-5">
@@ -10,7 +10,9 @@
                 <p>ADMIN HPMMKOMSTMIKDP</p>
               </header>
               <hr />
-              <nuxt />
+              <slide-y-up-transition mode="out-in" origin="center top">
+                <nuxt />
+              </slide-y-up-transition>
             </div>
           </div>
         </div>
@@ -19,14 +21,17 @@
   </div>
 </template>
 <script>
+import { SlideYUpTransition } from 'vue2-transitions'
 import Logo from '~/assets/img/logo.png'
 import Background from '~/assets/img/background.jpg'
 export default {
+  components: {
+    SlideYUpTransition
+  },
   data() {
     return {
       Logo,
-      Background,
-      year: new Date().getFullYear()
+      Background
     }
   }
 }
