@@ -1,27 +1,30 @@
 <template>
-  <div>
-    <b-form @submit="onSubmit">
-      <b-form-input
-        v-model="form.email"
-        type="email"
-        placeholder="Alamat Email"
-        class="mb-4 mt-2"
-      />
-      <b-form-input
-        v-model="form.password"
-        type="password"
-        placeholder="Password"
-        class="mb-4 mt-2"
-      />
-
-      <b-button type="submit" variant="primary">{{
-        loading ? 'Loading' : 'Login'
-      }}</b-button>
-      <router-link to="/register" class="btn btn-secondary"
-        >Register</router-link
+  <form>
+    <base-input
+      v-model="form.email"
+      class="input-group-alternative mb-3"
+      placeholder="Email"
+      addon-left-icon="ni ni-email-83"
+    >
+    </base-input>
+    <base-input
+      v-model="form.password"
+      class="input-group-alternative"
+      placeholder="Password"
+      type="password"
+      addon-left-icon="ni ni-lock-circle-open"
+    >
+    </base-input>
+    <div class="text-center">
+      <base-button type="primary" block :disabled="loading" @click="onSubmit">{{
+        btnText
+      }}</base-button>
+      <hr />
+      <router-link to="/register" class="text-primary"
+        ><small>Create new account</small></router-link
       >
-    </b-form>
-  </div>
+    </div>
+  </form>
 </template>
 <script>
 export default {
@@ -36,15 +39,17 @@ export default {
       loading: false
     }
   },
+  computed: {
+    btnText() {
+      return this.loading ? 'Loading' : 'Sign in'
+    }
+  },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault()
-      this.login(this.form)
-    },
-    async login(data) {
+    async onSubmit(e) {
+      e.preventDefault()
       this.loading = true
       try {
-        const req = await this.$axios.$post('/auth/login', data)
+        const req = await this.$axios.$post('/auth/login', this.form)
         this.$router.push('/')
         this.$cookies.set('auth_token', req.token, {
           maxAge: 60 * 60 * 24 * 7
