@@ -25,7 +25,7 @@
       }}</base-button>
       <hr />
       <router-link to="/login" class="text-primary"
-        ><small>Sign in</small></router-link
+        ><small>Login into your account</small></router-link
       >
     </div>
   </form>
