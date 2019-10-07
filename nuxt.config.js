@@ -20,6 +20,7 @@ module.exports = {
   },
   loading: { color: '#666ee8' },
   css: [
+    '~/assets/fonts/ionicon/css/ionicon.css',
     '~/assets/fonts/nucleo/css/nucleo.css',
     '~/assets/fonts/open-sans/css/open-sans.css',
     'izitoast/dist/css/iziToast.css',
