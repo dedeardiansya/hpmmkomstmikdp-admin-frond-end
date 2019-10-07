@@ -1,12 +1,20 @@
 <template>
   <div class="auth-layout" :style="'background-image: url(' + Background + ')'">
-    <div class="m-auto layout-wrap p-4 bg-white">
-      <header class="text-center">
-        <img :src="Logo" class="d-block m-auto" />
-        <p>ADMIN HPMMKOMSTMIKDP</p>
-      </header>
-      <hr />
-      <nuxt />
+    <div class="container py-8">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <header class="text-center">
+                <img :src="Logo" class="d-block m-auto" />
+                <p>ADMIN HPMMKOMSTMIKDP</p>
+              </header>
+              <hr />
+              <nuxt />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -17,7 +25,8 @@ export default {
   data() {
     return {
       Logo,
-      Background
+      Background,
+      year: new Date().getFullYear()
     }
   }
 }
@@ -34,8 +43,5 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.layout-wrap {
-  min-width: 400px;
 }
 </style>
