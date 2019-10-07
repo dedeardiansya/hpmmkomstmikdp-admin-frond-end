@@ -20,15 +20,21 @@ module.exports = {
   },
   loading: { color: '#666ee8' },
   css: [
-    '~/assets/fonts/Roboto/Roboto.css',
+    '~/assets/fonts/nucleo/css/nucleo.css',
+    '~/assets/fonts/open-sans/css/open-sans.css',
     'izitoast/dist/css/iziToast.css',
-    '~/assets/fonts/ionicon/css/ionicons.css',
-    'quill/dist/quill.snow.css'
+    'quill/dist/quill.snow.css',
+    '~/assets/scss/argon.scss'
   ],
+  styleResources: {
+    scss: ['assets/scss/resources.scss']
+  },
   plugins: [
     { src: '~/plugins/mixins/izitoast', ssr: false },
     { src: '~/plugins/vue-quill', ssr: false },
-    { src: '~/plugins/vuejs-datepicker', ssr: false }
+    { src: '~/plugins/vuejs-datepicker', ssr: false },
+    { src: '~/plugins/globalComponents/no-ssr', ssr: false },
+    '~/plugins/globalComponents/ssr'
   ],
   buildModules: ['@nuxtjs/eslint-module'],
   modules: [

@@ -20,6 +20,10 @@ module.exports = {
   rules: {
     'nuxt/no-cjs-in-config': 'off',
     'max-len': 'off',
-    'no-console': 0
+    'no-console': 'off',
+    'vue/require-prop-types': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/no-template-shadow': 'off',
+    'vue/no-v-html': 'off'
   }
 }
