@@ -71,3 +71,6 @@ build/Release
 
 # Package lock
 package-lock.json
+
+# Yarn lock
+yarn.lock
