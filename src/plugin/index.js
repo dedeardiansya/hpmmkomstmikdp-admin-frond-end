@@ -1,9 +1,5 @@
-import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import 'socicon/css/socicon.css'
-import '@fortawesome/fontawesome-free/css/all.min.css'
-import '@/assets/fonts/flaticon/flaticon.css'
-import '@/assets/fonts/flaticon2/flaticon.css'
-import '@/assets/fonts/line-awesome/css/line-awesome.css'
+import '@/assets/fonts/poppins/css/poppins.css'
+import '@/assets/fonts/ionicon/css/ionicons.css'
 import '@/assets/scss/app.scss'
 
 import globalDirectives from './globalDirectives'
