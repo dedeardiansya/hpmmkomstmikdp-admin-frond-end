@@ -6,7 +6,11 @@ const state = {
   user: null
 }
 
-const getters = {}
+const getters = {
+  isAuthenticated(state) {
+    return !!state.user
+  }
+}
 
 const actions = {
   [SIGN_IN_WITH_GOOGLE]({ commit }) {

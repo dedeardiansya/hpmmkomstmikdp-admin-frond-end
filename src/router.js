@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import AppLayout from '@/layout'
-
+import AuthRequired from '@/middleware/AuthRequired'
 Vue.use(VueRouter)
 
 const routes = [
@@ -9,6 +9,7 @@ const routes = [
     path: '/',
     redirect: 'dashboard',
     component: AppLayout,
+    beforeEnter: AuthRequired,
     children: [
       {
         path: '/dashboard',
