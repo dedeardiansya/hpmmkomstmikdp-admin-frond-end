@@ -1,4 +1,5 @@
 import { auth, googleProvider } from '../../firebase'
+import authService from '../../services/auth'
 import { SIGN_IN_WITH_GOOGLE } from '../actions.type'
 import { SET_AUTH } from '../mutations.type'
 
@@ -17,11 +18,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       auth
         .signInWithPopup(googleProvider)
-        .then(result => {
+        .then(() => authService.isAdmin())
+        .then(() => {
+          resolve(auth.currentUser)
           commit(SET_AUTH, auth.currentUser)
-          resolve(result)
         })
         .catch(e => {
+          auth.signOut()
           reject(e)
         })
     })
