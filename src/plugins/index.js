@@ -6,6 +6,7 @@ import BootstrapVue from 'bootstrap-vue'
 import globalDirectives from './globalDirectives'
 import globalComponents from './globalComponents'
 import sidebar from './sidebar'
+import BlockUI from 'vue-blockui'
 
 export default {
   install(Vue) {
@@ -13,5 +14,6 @@ export default {
     Vue.use(globalDirectives)
     Vue.use(globalComponents)
     Vue.use(sidebar)
+    Vue.use(BlockUI)
   }
 }

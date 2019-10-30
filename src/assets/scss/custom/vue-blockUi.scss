@@ -1,0 +1,14 @@
+.kt-portlet .loading-container {
+  .loading-backdrop {
+    position: absolute !important;
+    background-color: rgba(kt-state-color(light), .9) !important;
+  }
+  .loading {
+    padding: 0 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    .loading-icon {
+      margin: 0 !important;
+    }
+  }
+}
