@@ -4,7 +4,7 @@
     :class="{ 'hide-sidebar': !this.$sidebar.showSidebar }"
   >
     <sidebar-toggle />
-    <side-bar>
+    <sidebar>
       <template slot="items">
         <sidebar-item
           :link="{
@@ -42,7 +42,7 @@
           }"
         />
       </template>
-    </side-bar>
+    </sidebar>
     <div class="layout-main">
       <navbar></navbar>
       <div class="container-fluid py-3">
@@ -53,9 +53,15 @@
 </template>
 <script>
 import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar'
+import SidebarItem from './components/SidebarItem'
+import SidebarToggle from './components/SidebarToggle'
 export default {
   components: {
-    Navbar
+    Navbar,
+    Sidebar,
+    SidebarItem,
+    SidebarToggle
   }
 }
 </script>

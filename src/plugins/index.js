@@ -5,13 +5,13 @@ import '@/assets/scss/app.scss'
 import BootstrapVue from 'bootstrap-vue'
 import globalDirectives from './globalDirectives'
 import globalComponents from './globalComponents'
-import Sidebar from '@/components/Sidebar'
+import sidebar from './sidebar'
 
 export default {
   install(Vue) {
     Vue.use(BootstrapVue)
     Vue.use(globalDirectives)
     Vue.use(globalComponents)
-    Vue.use(Sidebar)
+    Vue.use(sidebar)
   }
 }
