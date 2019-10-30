@@ -4,12 +4,18 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import plugins from './plugins'
+import { auth } from './firebase'
 
 Vue.config.productionTip = false
 Vue.use(plugins)
 
-new Vue({
-  store,
-  router,
-  render: h => h(App)
-}).$mount('#app')
+let app
+auth.onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      store,
+      router,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})
