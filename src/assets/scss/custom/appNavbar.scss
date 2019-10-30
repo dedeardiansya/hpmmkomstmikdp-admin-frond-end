@@ -1,0 +1,28 @@
+.layout-navbar {
+  background-color: $white;
+  box-shadow: $kt-elevate-shadow;
+  .navbar-wrapper {
+    display: flex;
+    padding: 20px 0;
+    .left {
+      margin: auto 0;
+      margin-right: auto;
+    }
+    .center {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      .navbar-logo {
+        display: block;
+        margin: auto;
+        img {
+          height: 55px;
+        }
+      }
+    }
+    .right {
+      margin: auto 0;
+      margin-left: auto;
+    }
+  }
+}
