@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "bootstrap-vue": "^2.0.4",
+    "bootstrap-vue": "2.0.0-rc.15",
+    "chart.js": "^2.9.1",
     "core-js": "^3.3.5",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
+    "vue-perfect-scrollbar": "^0.2.0",
     "vue-router": "^3.0.6",
-    "vue2-perfect-scrollbar": "^1.2.1",
+    "vue2-transitions": "^0.3.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -43,7 +45,9 @@
       "plugin:vue/essential",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
