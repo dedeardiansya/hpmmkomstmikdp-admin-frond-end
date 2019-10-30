@@ -18,6 +18,11 @@ const routes = [
           import(/* webpackChunkName: "dashboard" */ './views/Dashboard')
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "login" */ './views/Login')
   }
 ]
 
