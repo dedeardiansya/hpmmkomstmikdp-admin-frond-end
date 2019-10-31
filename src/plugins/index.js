@@ -8,6 +8,7 @@ import globalComponents from './globalComponents'
 import sidebar from './sidebar'
 import BlockUI from 'vue-blockui'
 import VueSweetalert2 from 'vue-sweetalert2'
+import SvgIcon from './svgIcon'
 
 export default {
   install(Vue) {
@@ -17,5 +18,6 @@ export default {
     Vue.use(sidebar)
     Vue.use(BlockUI)
     Vue.use(VueSweetalert2)
+    Vue.use(SvgIcon)
   }
 }
