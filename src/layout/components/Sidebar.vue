@@ -6,7 +6,7 @@
           class="btn btn-label-primary btn-lg btn-icon"
           @click="closeSidebar"
         >
-          <i class="simple-icon-list"></i>
+          <svg-icon-angle-double-left />
         </button>
       </div>
     </div>

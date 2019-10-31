@@ -7,7 +7,7 @@
       class="btn btn-label-primary btn-icon btn-sm"
       @click="$sidebar.displaySidebar(!$sidebar.showSidebar)"
     >
-      <i class="simple-icon-list"></i>
+      <svg-icon-angle-double-right />
     </button>
   </div>
 </template>
