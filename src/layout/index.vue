@@ -14,6 +14,14 @@
         >
           <svg-icon-equalizer />
         </sidebar-item>
+        <sidebar-item
+          :link="{
+            name: 'Blog',
+            path: '/blog'
+          }"
+        >
+          <svg-icon-cipboard-list />
+        </sidebar-item>
       </template>
     </sidebar>
     <div class="layout-main">
