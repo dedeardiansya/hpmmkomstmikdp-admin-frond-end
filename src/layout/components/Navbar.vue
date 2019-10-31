@@ -22,7 +22,10 @@
           <button class="btn btn-label-warning btn-icon">
             <i class="simple-icon-magnifier"></i>
           </button>
-          <button class="btn btn-label-danger btn-icon ml-2">
+          <button
+            class="btn btn-label-danger btn-icon ml-2"
+            @click.prevent="signOut"
+          >
             <i class="simple-icon-logout"></i>
           </button>
         </div>
@@ -30,3 +33,34 @@
     </div>
   </nav>
 </template>
+<script>
+import { SIGN_OUT } from '@/store/actions.type'
+export default {
+  methods: {
+    signOut() {
+      this.$swal({
+        title: 'You sure you want to logout?',
+        type: 'info',
+        showCancelButton: true,
+        buttonsStyling: false,
+        confirmButtonText: 'Sign Out',
+        confirmButtonClass: 'btn btn-danger',
+        cancelButtonClass: 'btn btn-primary'
+      })
+        .then(() => this.$store.dispatch(SIGN_OUT))
+        .then(() => {
+          this.$router.push('/login')
+        })
+        .catch(e => {
+          this.$swal({
+            title: 'Error',
+            type: 'error',
+            text: e.message,
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-primary btn-wide'
+          })
+        })
+    }
+  }
+}
+</script>

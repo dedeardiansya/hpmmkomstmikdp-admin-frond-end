@@ -32,7 +32,6 @@ const actions = {
   [SIGN_OUT]({ commit }) {
     return auth.signOut().then(() => {
       commit(SET_AUTH, null)
-      return true
     })
   }
 }
