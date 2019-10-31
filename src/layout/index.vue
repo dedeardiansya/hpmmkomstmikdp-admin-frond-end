@@ -9,38 +9,11 @@
         <sidebar-item
           :link="{
             name: 'Dashboard',
-            icon: 'iconsminds-shop-4',
             path: '/dashboard'
           }"
-        />
-        <sidebar-item
-          :link="{
-            name: 'Blog',
-            icon: 'iconsminds-library',
-            path: '/blog'
-          }"
-        />
-        <sidebar-item
-          :link="{
-            name: 'Blog',
-            icon: 'iconsminds-library',
-            path: '/blog'
-          }"
-        />
-        <sidebar-item
-          :link="{
-            name: 'Blog',
-            icon: 'iconsminds-library',
-            path: '/blog'
-          }"
-        />
-        <sidebar-item
-          :link="{
-            name: 'Blog',
-            icon: 'iconsminds-library',
-            path: '/blog'
-          }"
-        />
+        >
+          <svg-icon-equalizer />
+        </sidebar-item>
       </template>
     </sidebar>
     <div class="layout-main">

@@ -8,7 +8,9 @@
       :href="link.path"
     >
       <div class="sidebar-link-wrapper">
-        <span class="sidebar-link-icon"><i :class="link.icon"/></span>
+        <span class="sidebar-link-icon">
+          <slot></slot>
+        </span>
         <span class="sidebar-link-text">{{ link.name }}</span>
       </div>
     </router-link>
