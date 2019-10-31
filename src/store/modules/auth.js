@@ -1,6 +1,6 @@
 import { auth, googleProvider } from '../../firebase'
 import authService from '../../services/auth'
-import { SIGN_IN_WITH_GOOGLE } from '../actions.type'
+import { SIGN_IN_WITH_GOOGLE, SIGN_OUT } from '../actions.type'
 import { SET_AUTH } from '../mutations.type'
 
 const state = {
@@ -27,6 +27,12 @@ const actions = {
           auth.signOut()
           reject(e)
         })
+    })
+  },
+  [SIGN_OUT]({ commit }){
+    return auth.signOut().then(() => {
+      commit(SET_AUTH, null)
+      return true
     })
   }
 }
