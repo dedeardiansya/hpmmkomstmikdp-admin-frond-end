@@ -15,7 +15,11 @@
                   alt="Logo hpmm"
                 />
                 <h3 class="title mb-5 font-weight-bold">Sign in To Admin</h3>
-                <button @click.prevent="signIn" type="button" class="btn btn-light btn-elevate">
+                <button
+                  @click.prevent="signIn"
+                  type="button"
+                  class="btn btn-light btn-elevate"
+                >
                   <svg
                     width="36px"
                     height="36px"
@@ -59,7 +63,10 @@
                   </svg>
                   Sign in with Google
                 </button>
-                <div v-if="error" class="alert alert-solid-danger alert-bold text-center mt-3">
+                <div
+                  v-if="error"
+                  class="alert alert-solid-danger alert-bold text-center mt-3"
+                >
                   <div class="alert-text">{{ error }}</div>
                 </div>
               </div>
@@ -85,15 +92,17 @@ export default {
   methods: {
     signIn() {
       this.loading = true
-      this.$store.dispatch(SIGN_IN_WITH_GOOGLE)
-      .then(() => {
-        this.loading = false
-        this.$router.push('/dashboard')
-      }).catch(e => {
-        this.loading = false
-        if (e.response) this.error = e.response.data.message
-        else this.error = e.message
-      })
+      this.$store
+        .dispatch(SIGN_IN_WITH_GOOGLE)
+        .then(() => {
+          this.loading = false
+          this.$router.push('/dashboard')
+        })
+        .catch(e => {
+          this.loading = false
+          if (e.response) this.error = e.response.data.message
+          else this.error = e.message
+        })
     }
   }
 }
