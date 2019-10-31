@@ -5,9 +5,10 @@
         <div class="left">
           <button
             class="btn btn-label-primary btn-icon mr-2"
-            @click="$sidebar.displaySidebar(!$sidebar.showSidebar)"
+            @click.prevent="$sidebar.displaySidebar(!$sidebar.showSidebar)"
           >
-            <i class="simple-icon-list"></i>
+            <svg-icon-angle-double-left v-if="$sidebar.showSidebar" />
+            <svg-icon-angle-double-right v-else />
           </button>
           <button class="btn btn-label-success btn-icon">
             <i class="simple-icon-bell"></i>
