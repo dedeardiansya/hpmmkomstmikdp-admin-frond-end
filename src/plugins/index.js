@@ -7,6 +7,7 @@ import globalDirectives from './globalDirectives'
 import globalComponents from './globalComponents'
 import sidebar from './sidebar'
 import BlockUI from 'vue-blockui'
+import VueSweetalert2 from 'vue-sweetalert2'
 
 export default {
   install(Vue) {
@@ -15,5 +16,6 @@ export default {
     Vue.use(globalComponents)
     Vue.use(sidebar)
     Vue.use(BlockUI)
+    Vue.use(VueSweetalert2)
   }
 }
