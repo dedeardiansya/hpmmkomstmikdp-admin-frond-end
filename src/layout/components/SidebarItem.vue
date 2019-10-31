@@ -2,7 +2,6 @@
   <li class="sidebar-item">
     <router-link
       :to="link.path"
-      @click.native="linkClick"
       class="sidebar-link"
       :target="link.target"
       :href="link.path"
@@ -28,13 +27,6 @@ export default {
           path: '',
           icon: ''
         }
-      }
-    }
-  },
-  methods: {
-    linkClick() {
-      if (this.$sidebar && this.$sidebar.showSidebar === true) {
-        this.$sidebar.displaySidebar(false)
       }
     }
   }
