@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { baseApiUrl } from '../../config'
 
-axios.defaults.baseURL = baseApiUrl
+axios.defaults.baseURL = process.env.VUE_APP_BASE_API_URL
 
 export default axios
