@@ -13,7 +13,7 @@ const setIdToken = () => {
 
 const isAdmin = async () => {
   await setIdToken()
-  return axios.get('/user/profile')
+  return axios.get('/admin/user/profile')
 }
 
 export default {
