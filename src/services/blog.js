@@ -1,18 +1,18 @@
 import service from './axios'
+import authService from './auth'
 
-const createBlog = async (idToken, data) => {
+const createBlog = async data => {
   return new Promise(async (resolve, reject) => {
     try {
+      const idToken = await authService.getToken()
       resolve(
         await service(idToken)
           .post('/admin/blog', data)
           .then(res => res.data)
       )
     } catch (e) {
-      let message
-      if (e.response) message = e.response.data.message
-      else message = e.message
-      reject(message)
+      if (e.response) e.message = e.response.data.message
+      reject(e)
     }
   })
 }
