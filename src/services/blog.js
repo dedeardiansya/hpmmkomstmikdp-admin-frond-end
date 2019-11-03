@@ -36,7 +36,22 @@ const fetchBlogs = data =>
     }
   })
 
+const fetchBlog = id =>
+  new Promise(async (resolve, reject) => {
+    try {
+      resolve(
+        await service(await authService.getToken())
+          .get(`/admin/blog/${id}`)
+          .then(res => res.data.blog)
+      )
+    } catch (e) {
+      if (e.response) e.message = e.response.data.message
+      reject(e)
+    }
+  })
+
 export default {
   createBlog,
-  fetchBlogs
+  fetchBlogs,
+  fetchBlog
 }
