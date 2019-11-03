@@ -1,19 +1,20 @@
-import axios from './axios'
-import { auth } from '../firebase'
+import service from './axios'
 
-const setIdToken = () => {
-  if (auth.currentUser) {
-    return new Promise(async resolve => {
-      const idToken = await auth.currentUser.getIdToken()
-      axios.defaults.headers.common.authorization = `bearer ${idToken}`
-      resolve()
-    })
-  }
-}
-
-const createBlog = async data => {
-  await setIdToken()
-  return axios.post('/admin/blog', data).then(res => res.data)
+const createBlog = async (idToken, data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      resolve(
+        await service(idToken)
+          .post('/admin/blog', data)
+          .then(res => res.data)
+      )
+    } catch (e) {
+      let message
+      if (e.response) message = e.response.data.message
+      else message = e.message
+      reject(message)
+    }
+  })
 }
 
 export default {
