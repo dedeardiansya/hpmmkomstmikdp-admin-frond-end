@@ -71,7 +71,7 @@
   </div>
 </template>
 <script>
-import blogService from '../../../services/blog'
+import { CREATE_BLOG } from '@/store/actions.type'
 export default {
   data() {
     return {
@@ -99,7 +99,7 @@ export default {
       this.loading = true
       this.error = ''
       try {
-        const blog = await blogService.createBlog(data)
+        const { blog } = await this.$store.dispatch(CREATE_BLOG, data)
         this.resetModal()
         console.log(blog)
       } catch (e) {
