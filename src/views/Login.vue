@@ -59,9 +59,7 @@ export default {
           this.$router.push('/dashboard')
         })
         .catch(e => {
-          this.loading = false
-          if (e.response) this.error = e.response.data.message
-          else this.error = e.message
+          this.error = e.message
         })
     }
   }

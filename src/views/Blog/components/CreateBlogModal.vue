@@ -103,8 +103,7 @@ export default {
         this.resetModal()
         console.log(blog)
       } catch (e) {
-        if (e.response) this.error = e.response.data.message
-        else this.error = e.message
+        this.error = e.message
       }
       this.loading = false
     }
