@@ -1,5 +1,4 @@
-import { auth, googleProvider } from '../../firebase'
-import authService from '../../services/auth'
+import authServices from '@/services/auth'
 import { SIGN_IN_WITH_GOOGLE, SIGN_OUT } from '../actions.type'
 import { SET_AUTH } from '../mutations.type'
 
@@ -15,24 +14,12 @@ const getters = {
 
 const actions = {
   [SIGN_IN_WITH_GOOGLE]({ commit }) {
-    return new Promise((resolve, reject) => {
-      auth
-        .signInWithPopup(googleProvider)
-        .then(() => authService.isAdmin())
-        .then(() => {
-          resolve(auth.currentUser)
-          commit(SET_AUTH, auth.currentUser)
-        })
-        .catch(e => {
-          auth.signOut()
-          reject(e)
-        })
+    return authServices.signInWithGoogle().then(user => {
+      commit(SET_AUTH, user)
     })
   },
   [SIGN_OUT]({ commit }) {
-    return auth.signOut().then(() => {
-      commit(SET_AUTH, null)
-    })
+    return authServices.signOut().then(() => commit(SET_AUTH, null))
   }
 }
 

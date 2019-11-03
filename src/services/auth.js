@@ -1,7 +1,8 @@
 import service from './axios'
+import { auth, googleProvider } from '../firebase'
 
-const isAdmin = idToken => {
-  return new Promise(async (resolve, reject) => {
+const isAdmin = idToken =>
+  new Promise(async (resolve, reject) => {
     try {
       resolve(
         await service(idToken)
@@ -9,14 +10,30 @@ const isAdmin = idToken => {
           .then(res => res.data)
       )
     } catch (e) {
-      let message
-      if (e.response) message = e.response.data.message
-      else message = e.message
-      reject(message)
+      if (e.response) e.message = e.response.data.message
+      reject(e)
     }
   })
-}
+
+const signInWithGoogle = () =>
+  new Promise(async (resolve, reject) => {
+    auth
+      .signInWithPopup(googleProvider)
+      .then(() => auth.currentUser.getIdToken(true))
+      .then(idtoken => isAdmin(idtoken))
+      .then(() => {
+        resolve(auth.currentUser)
+      })
+      .catch(e => {
+        auth.signOut()
+        reject(e)
+      })
+  })
+
+const signOut = () => auth.signOut()
 
 export default {
-  isAdmin
+  isAdmin,
+  signInWithGoogle,
+  signOut
 }
