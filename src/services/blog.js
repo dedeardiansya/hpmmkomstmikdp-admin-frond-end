@@ -1,12 +1,11 @@
 import service from './axios'
 import authService from './auth'
 
-const createBlog = async data => {
-  return new Promise(async (resolve, reject) => {
+const createBlog = data =>
+  new Promise(async (resolve, reject) => {
     try {
-      const idToken = await authService.getToken()
       resolve(
-        await service(idToken)
+        await service(await authService.getToken())
           .post('/admin/blog', data)
           .then(res => res.data)
       )
@@ -15,8 +14,29 @@ const createBlog = async data => {
       reject(e)
     }
   })
-}
+
+const fetchBlogs = data =>
+  new Promise(async (resolve, reject) => {
+    let limit = 4
+    let offset = 0
+    let category = ''
+    if (data && data.limit) limit = data.limit
+    if (data && data.offset) offset = data.offset
+    if (data && data.category) category = data.category
+    const url = `/admin/blog?limit=${limit}&offset=${offset}&category=${category}`
+    try {
+      resolve(
+        await service(await authService.getToken())
+          .get(url)
+          .then(res => res.data.blogs)
+      )
+    } catch (e) {
+      if (e.response) e.message = e.response.data.message
+      reject(e)
+    }
+  })
 
 export default {
-  createBlog
+  createBlog,
+  fetchBlogs
 }
