@@ -59,6 +59,7 @@ export default {
           this.$router.push('/dashboard')
         })
         .catch(e => {
+          this.loading = false
           this.error = e.message
         })
     }
