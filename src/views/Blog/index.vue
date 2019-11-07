@@ -11,21 +11,17 @@
                 <a
                   class="nav-link"
                   :class="category ? '' : 'active'"
-                  @click.prevent="category = ''"
+                  @click.prevent="setCategory('')"
                   href="#"
                   >Semua</a
                 >
               </li>
-              <li
-                class="nav-item"
-                v-for="(item, i) in $store.getters.config.BLOG_CATEGORIES"
-                :key="i"
-              >
+              <li class="nav-item" v-for="(item, i) in categories" :key="i">
                 <a
                   class="nav-link"
                   :class="category == item ? 'active' : ''"
                   href="#"
-                  @click.prevent="category = item"
+                  @click.prevent="setCategory(item)"
                   >{{ item }}</a
                 >
               </li>
@@ -43,16 +39,25 @@
 import CreateBlogModal from './components/CreateBlogModal'
 import BlogLists from './components/BlogLists'
 import SearchBlog from './components/SearchBlog'
+import { SET_BLOG_CATEGORY } from '@/store/mutations.type'
 export default {
-  data() {
-    return {
-      category: ''
+  computed: {
+    category() {
+      return this.$store.getters.blogCategory
+    },
+    categories() {
+      return this.$store.getters.config.BLOG_CATEGORIES
     }
   },
   components: {
     CreateBlogModal,
     BlogLists,
     SearchBlog
+  },
+  methods: {
+    setCategory(category) {
+      this.$store.commit(SET_BLOG_CATEGORY, category)
+    }
   }
 }
 </script>

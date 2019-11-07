@@ -10,17 +10,18 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
 import BlogList from './BlogList'
-import blogService from '@/services/blog'
+import { FETCH_BLOGS } from '@/store/actions.type'
 export default {
-  props: {
-    category: {
-      type: String,
-      default: ''
+  computed: {
+    category() {
+      return this.$store.getters.blogCategory
+    },
+    blogs() {
+      return this.$store.getters.blogs
     }
   },
   data() {
     return {
-      blogs: [],
       infiniteId: +new Date()
     }
   },
@@ -30,14 +31,16 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      blogService
-        .fetchBlogs({ category: this.category, offset: this.blogs.length })
-        .then(blogs => {
-          if (blogs) {
-            this.blogs.push(...blogs)
-            $state.loaded()
-          } else {
+      this.$store
+        .dispatch(FETCH_BLOGS, {
+          category: this.category,
+          offset: this.blogs.length
+        })
+        .then(complete => {
+          if (complete) {
             $state.complete()
+          } else {
+            $state.loaded()
           }
         })
         .catch(e => {
@@ -48,7 +51,6 @@ export default {
   watch: {
     category: {
       handler() {
-        this.blogs = []
         this.infiniteId += 1
       },
       immediate: true,
