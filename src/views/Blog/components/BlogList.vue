@@ -22,7 +22,16 @@
             <p>
               {{ blog.description }}
             </p>
-            <button class="btn btn-sm btn-label-primary">
+            <button
+              class="btn btn-sm btn-label-primary"
+              :class="
+                updatePublicLoading
+                  ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                  : ''
+              "
+              :disabled="updatePublicLoading"
+              @click="updateBlogPublic({ id: blog.id, value: !blog.public })"
+            >
               MAKE {{ !blog.public ? 'PUBLIC' : 'PRIVATE' }}
             </button>
             &nbsp;
@@ -42,6 +51,7 @@
 <script>
 import Placeholder from '@/assets/img/placeholder.svg'
 import { getDate } from '@/utils'
+import { UPDATE_BLOG_PUBLIC } from '@/store/actions.type'
 export default {
   props: {
     blog: Object,
@@ -49,7 +59,8 @@ export default {
   },
   data() {
     return {
-      Placeholder
+      Placeholder,
+      updatePublicLoading: false
     }
   },
   computed: {
@@ -60,6 +71,20 @@ export default {
         month: 'long',
         day: 'numeric'
       })
+    }
+  },
+  methods: {
+    updateBlogPublic(data) {
+      this.updatePublicLoading = true
+      this.$store
+        .dispatch(UPDATE_BLOG_PUBLIC, data)
+        .then(() => {
+          this.updatePublicLoading = false
+        })
+        .catch(e => {
+          this.updatePublicLoading = false
+          this.$swal({ type: 'error', text: e.message })
+        })
     }
   }
 }

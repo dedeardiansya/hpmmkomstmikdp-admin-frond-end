@@ -64,9 +64,24 @@ const searchBlog = value =>
     }
   })
 
+const updateBlogPublic = (id, value) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      resolve(
+        await service(await authService.getToken())
+          .put(`/admin/blog/${id}/public`, { value })
+          .then(res => res.data)
+      )
+    } catch (e) {
+      if (e.response) e.message = e.response.data.message
+      reject(e)
+    }
+  })
+
 export default {
   createBlog,
   fetchBlogs,
   fetchBlog,
-  searchBlog
+  searchBlog,
+  updateBlogPublic
 }
