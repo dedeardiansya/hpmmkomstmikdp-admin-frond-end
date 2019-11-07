@@ -8,21 +8,33 @@
               class="nav nav-pills nav-pills-sm nav-pills-label nav-pills-bold"
             >
               <li class="nav-item">
-                <a class="nav-link active" href="#">Semua</a>
+                <a
+                  class="nav-link"
+                  :class="category ? '' : 'active'"
+                  @click.prevent="category = ''"
+                  href="#"
+                  >Semua</a
+                >
               </li>
-              <li class="nav-item"><a class="nav-link" href="#">Design</a></li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pemrograman</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Jaringan</a>
+              <li
+                class="nav-item"
+                v-for="(item, i) in $store.getters.config.BLOG_CATEGORIES"
+                :key="i"
+              >
+                <a
+                  class="nav-link"
+                  :class="category == item ? 'active' : ''"
+                  href="#"
+                  @click.prevent="category = item"
+                  >{{ item }}</a
+                >
               </li>
             </ul>
           </div>
           <create-blog-modal class="kt-portlet__head-toolbar" />
         </div>
         <search-blog></search-blog>
-        <blog-lists></blog-lists>
+        <blog-lists :category="category"></blog-lists>
       </div>
     </div>
   </div>
@@ -32,6 +44,11 @@ import CreateBlogModal from './components/CreateBlogModal'
 import BlogLists from './components/BlogLists'
 import SearchBlog from './components/SearchBlog'
 export default {
+  data() {
+    return {
+      category: ''
+    }
+  },
   components: {
     CreateBlogModal,
     BlogLists,
