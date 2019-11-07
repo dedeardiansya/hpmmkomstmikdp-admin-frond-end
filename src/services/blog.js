@@ -78,10 +78,25 @@ const updateBlogPublic = (id, value) =>
     }
   })
 
+const deleteBlog = id =>
+  new Promise(async (resolve, reject) => {
+    try {
+      resolve(
+        await service(await authService.getToken())
+          .delete(`/admin/blog/${id}`)
+          .then(res => res.data)
+      )
+    } catch (e) {
+      if (e.response) e.message = e.response.data.message
+      reject(e)
+    }
+  })
+
 export default {
   createBlog,
   fetchBlogs,
   fetchBlog,
   searchBlog,
-  updateBlogPublic
+  updateBlogPublic,
+  deleteBlog
 }

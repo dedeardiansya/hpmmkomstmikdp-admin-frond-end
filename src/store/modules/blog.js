@@ -1,9 +1,15 @@
 import blogServices from '@/services/blog'
-import { CREATE_BLOG, FETCH_BLOGS, UPDATE_BLOG_PUBLIC } from '../actions.type'
+import {
+  CREATE_BLOG,
+  FETCH_BLOGS,
+  UPDATE_BLOG_PUBLIC,
+  DELETE_BLOG
+} from '../actions.type'
 import {
   SET_BLOG_CATEGORY,
   PUSH_BLOG,
-  SET_BLOG_PUBLIC
+  SET_BLOG_PUBLIC,
+  REMOVE_BLOG
 } from '../mutations.type'
 
 const state = {
@@ -37,6 +43,11 @@ const actions = {
     return blogServices.updateBlogPublic(data.id, data.value).then(() => {
       commit(SET_BLOG_PUBLIC, data)
     })
+  },
+  [DELETE_BLOG]({ commit }, data) {
+    return blogServices.deleteBlog(data).then(() => {
+      commit(REMOVE_BLOG, data)
+    })
   }
 }
 
@@ -55,6 +66,13 @@ const mutations = {
         blog.public = data.value
       }
       blogs.push(blog)
+    })
+    state.blogs = blogs
+  },
+  [REMOVE_BLOG](state, data) {
+    const blogs = []
+    state.blogs.forEach(blog => {
+      if (data != blog.id) blogs.push(blog)
     })
     state.blogs = blogs
   }

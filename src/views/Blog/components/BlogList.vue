@@ -41,7 +41,18 @@
               >EDIT</router-link
             >
             &nbsp;
-            <button class="btn btn-sm btn-label-danger">DELETE</button>
+            <button
+              class="btn btn-sm btn-label-danger"
+              :class="
+                deleteLoading
+                  ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                  : ''
+              "
+              :disabled="deleteLoading"
+              @click="deleteBlog(blog.id)"
+            >
+              DELETE
+            </button>
           </div>
         </div>
       </div>
@@ -51,7 +62,7 @@
 <script>
 import Placeholder from '@/assets/img/placeholder.svg'
 import { getDate } from '@/utils'
-import { UPDATE_BLOG_PUBLIC } from '@/store/actions.type'
+import { UPDATE_BLOG_PUBLIC, DELETE_BLOG } from '@/store/actions.type'
 export default {
   props: {
     blog: Object,
@@ -60,7 +71,8 @@ export default {
   data() {
     return {
       Placeholder,
-      updatePublicLoading: false
+      updatePublicLoading: false,
+      deleteLoading: false
     }
   },
   computed: {
@@ -85,6 +97,29 @@ export default {
           this.updatePublicLoading = false
           this.$swal({ type: 'error', text: e.message })
         })
+    },
+    deleteBlog(data) {
+      this.$swal({
+        text: 'Anda yakin ingin menghapus blog ini?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batalkan',
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+          this.deleteLoading = true
+          this.$store
+            .dispatch(DELETE_BLOG, data)
+            .then(() => {
+              this.deleteLoading = false
+            })
+            .catch(e => {
+              this.deleteLoading = false
+              this.$swal({ type: 'error', text: e.message })
+            })
+        }
+      })
     }
   }
 }
