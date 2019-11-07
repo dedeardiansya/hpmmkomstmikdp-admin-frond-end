@@ -92,11 +92,26 @@ const deleteBlog = id =>
     }
   })
 
+const uploadHero = (id, data, onUploadProgress) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      resolve(
+        await service(await authService.getToken())
+          .put(`admin/blog/${id}/hero`, data, { onUploadProgress })
+          .then(res => res.data.blog)
+      )
+    } catch (e) {
+      if (e.response) e.message = e.response.data.message
+      reject(e)
+    }
+  })
+
 export default {
   createBlog,
   fetchBlogs,
   fetchBlog,
   searchBlog,
   updateBlogPublic,
-  deleteBlog
+  deleteBlog,
+  uploadHero
 }

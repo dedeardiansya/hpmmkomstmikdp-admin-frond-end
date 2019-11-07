@@ -10,7 +10,12 @@
       <div class="kt-portlet__content">
         <div class="row">
           <div class="col-md-3 mb-3">
-            <img :src="blog.hero || Placeholder" alt="" class="d-block" width="100%"/>
+            <img
+              :src="blog.hero || Placeholder"
+              alt=""
+              class="d-block"
+              width="100%"
+            />
           </div>
           <div class="col-md-9 mb-3">
             <h3>{{ blog.title }}</h3>

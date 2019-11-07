@@ -9,7 +9,8 @@ import {
   SET_BLOG_CATEGORY,
   PUSH_BLOG,
   SET_BLOG_PUBLIC,
-  REMOVE_BLOG
+  REMOVE_BLOG,
+  UPDATE_BLOG_HERO
 } from '../mutations.type'
 
 const state = {
@@ -73,6 +74,16 @@ const mutations = {
     const blogs = []
     state.blogs.forEach(blog => {
       if (data != blog.id) blogs.push(blog)
+    })
+    state.blogs = blogs
+  },
+  [UPDATE_BLOG_HERO](state, data) {
+    const blogs = []
+    state.blogs.forEach(blog => {
+      if (data.id == blog.id) {
+        blog.hero = data.hero
+      }
+      blogs.push(blog)
     })
     state.blogs = blogs
   }
