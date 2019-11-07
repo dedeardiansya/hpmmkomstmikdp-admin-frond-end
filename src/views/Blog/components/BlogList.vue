@@ -26,7 +26,12 @@
               MAKE {{ !blog.public ? 'PUBLIC' : 'PRIVATE' }}
             </button>
             &nbsp;
-            <button class="btn btn-sm btn-label-info">EDIT</button>&nbsp;
+            <router-link
+              class="btn btn-sm btn-label-info"
+              :to="{ name: 'edit_blog', params: { id: blog.id } }"
+              >EDIT</router-link
+            >
+            &nbsp;
             <button class="btn btn-sm btn-label-danger">DELETE</button>
           </div>
         </div>
