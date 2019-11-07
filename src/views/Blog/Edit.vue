@@ -19,11 +19,11 @@
           <div class="kt-portlet__content">
             <div class="form-group">
               <label>Title</label
-              ><input type="text" placeholder="Title" class="form-control" />
+              ><input type="text" placeholder="Title" class="form-control" v-model="blog.title" />
             </div>
             <div class="form-group">
               <label>Author</label
-              ><input type="text" placeholder="Author" class="form-control" />
+              ><input type="text" placeholder="Author" class="form-control" v-model="blog.author" />
             </div>
             <div class="form-group">
               <label>Category</label
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
               <label>Heading</label
-              ><input type="text" placeholder="Heading" class="form-control" />
+              ><input type="text" placeholder="Heading" class="form-control" v-model="blog.heading" />
             </div>
             <div class="form-group">
               <label>CreatedAt</label
@@ -45,6 +45,7 @@
                 type="date"
                 placeholder="CreatedAt"
                 class="form-control"
+                v-model="blog.createdAt"
               />
             </div>
             <div class="form-group">
@@ -70,7 +71,6 @@
 <script>
 import UpdateHero from './components/UpdateHero'
 import blogService from '@/services/blog'
-import authServices from '@/services/auth'
 import FroalaEditor from './components/froala-editor'
 
 export default {
@@ -80,26 +80,15 @@ export default {
   },
   data() {
     return {
-      blog: {},
+      blog: null,
       authToken: '',
-      body: '<p>My custom paragraph.</p>'
+      render: false
     }
   },
   beforeRouteEnter: (to, from, next) => {
-    let blog
     blogService
       .fetchBlog(to.params.id)
-      .then(data => {
-        blog = data
-        return authServices.getToken()
-      })
-      .then(token => {
-        next(vm => {
-          vm.setBlog(blog)
-          vm.setAuthToken(token)
-          return true
-        })
-      })
+      .then(blog => next(vm => vm.setBlog(blog)))
       .catch(() => {
         next('/404')
       })
@@ -112,13 +101,7 @@ export default {
       this.authToken = 'bearer ' + token
     },
     updateHero(hero) {
-      console.log('dede')
       this.$set(this.blog, 'hero', hero)
-    }
-  },
-  watch: {
-    body(val) {
-      console.log(val)
     }
   }
 }
