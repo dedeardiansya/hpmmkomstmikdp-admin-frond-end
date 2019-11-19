@@ -98,7 +98,7 @@ export default {
       this.loading = true
       this.error = ''
       try {
-        const { blog } = await this.$store.dispatch('CREATE_BLOG', data)
+        const { blog } = await this.$store.dispatch('blog/CREATE_BLOG', data)
         this.resetModal()
         console.log(blog)
       } catch (e) {

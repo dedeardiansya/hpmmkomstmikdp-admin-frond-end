@@ -40,26 +40,24 @@ import CreateBlogModal from '~/components/collections/blog/AppCreateBlogModal'
 import BlogLists from '~/components/collections/blog/AppBlogLists'
 import SearchBlog from '~/components/collections/blog/AppSearchBlog'
 export default {
-  middleware: 'auth',
   layout: 'app',
+  middleware: 'auth',
   components: {
     CreateBlogModal,
     BlogLists,
     SearchBlog
   },
-  data() {
-    return {
-      category: ''
-    }
-  },
   computed: {
+    category() {
+      return this.$store.getters['blog/category']
+    },
     categories() {
       return this.$store.getters.config.BLOG_CATEGORIES
     }
   },
   methods: {
     setCategory(category) {
-      this.category = category
+      this.$store.commit('blog/SET_BLOG_CATEGORY', category)
     }
   }
 }

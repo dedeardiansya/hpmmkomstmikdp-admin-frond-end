@@ -15,23 +15,22 @@ export default {
     InfiniteLoading,
     BlogList
   },
-  props: {
-    category: {
-      type: String,
-      default: ''
-    }
-  },
   data() {
     return {
-      infiniteId: +new Date(),
-      blogs: [],
-      authToken: ''
+      infiniteId: +new Date()
+    }
+  },
+  computed: {
+    category() {
+      return this.$store.getters['blog/category']
+    },
+    blogs() {
+      return this.$store.getters['blog/blogs']
     }
   },
   watch: {
     category: {
       handler() {
-        this.blogs = []
         this.infiniteId += 1
       },
       immediate: true,
@@ -39,17 +38,17 @@ export default {
     }
   },
   methods: {
-    async infiniteHandler($state) {
-      const user = this.$store.getters['auth/currentUser']
-      if (!this.authToken) this.authToken = await user.getIdToken(true)
-      const url = `/admin/blog?limit=4&offset=${this.blogs.length}&category=${this.category}`
-      this.$axios.setToken(this.authToken, 'Bearer')
-      this.$axios
-        .$get(url)
-        .then(data => {
-          this.blogs = [...this.blogs, ...data.blogs]
-          if (data.blogs.length) $state.loaded()
-          else $state.complete()
+    infiniteHandler($state) {
+      this.$store
+        .dispatch('blog/FETCH_BLOGS', {
+          offset: this.blogs.length
+        })
+        .then(complete => {
+          if (complete) {
+            $state.complete()
+          } else {
+            $state.loaded()
+          }
         })
         .catch(e => {
           console.log(e)

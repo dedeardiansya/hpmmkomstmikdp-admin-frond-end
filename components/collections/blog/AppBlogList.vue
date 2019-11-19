@@ -42,7 +42,7 @@
             &nbsp;
             <router-link
               class="btn btn-sm btn-label-info"
-              :to="{ name: 'edit_blog', params: { id: blog.id } }"
+              :to="'/blog/' + blog.id"
               >EDIT</router-link
             >
             &nbsp;
@@ -95,7 +95,7 @@ export default {
     updateBlogPublic(data) {
       this.updatePublicLoading = true
       this.$store
-        .dispatch('UPDATE_BLOG_PUBLIC', data)
+        .dispatch('blog/UPDATE_BLOG_PUBLIC', data)
         .then(() => {
           this.updatePublicLoading = false
         })
@@ -116,7 +116,7 @@ export default {
         if (result.value) {
           this.deleteLoading = true
           this.$store
-            .dispatch('DELETE_BLOG', data)
+            .dispatch('blog/DELETE_BLOG', data)
             .then(() => {
               this.deleteLoading = false
             })
