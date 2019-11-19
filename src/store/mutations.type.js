@@ -1,7 +1,0 @@
-export const SET_AUTH = 'setAuth'
-export const SET_CONFIG = 'setConfig'
-export const PUSH_BLOG = 'pushBlog'
-export const SET_BLOG_CATEGORY = 'setBlogCategory'
-export const SET_BLOG_PUBLIC = 'setBlogPublic'
-export const REMOVE_BLOG = 'removeBlog'
-export const UPDATE_BLOG_HERO = 'updateBlogHero'

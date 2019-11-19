@@ -1,0 +1,12 @@
+@import "config";
+@import "global/integration/frameworks/bootstrap/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "global/integration/frameworks/bootstrap/bootstrap.scss";
+@import "global/include";
+
+@import "custom/sidebar.scss";
+@import "custom/appLayout.scss";
+@import "custom/appNavbar.scss";
+@import "custom/loginPage.scss";
+@import "custom/vue-blockUi.scss";
+@import "custom/hero.scss";

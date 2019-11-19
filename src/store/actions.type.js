@@ -1,7 +1,0 @@
-export const SIGN_IN_WITH_GOOGLE = 'signInWithGoogle'
-export const SIGN_OUT = 'signOut'
-export const FETCH_SERVER_CONFIG = 'fetchServerConfig'
-export const CREATE_BLOG = 'createBlog'
-export const FETCH_BLOGS = 'fetchBlogs'
-export const UPDATE_BLOG_PUBLIC = 'updateBlogPublic'
-export const DELETE_BLOG = 'deleteBlog'
