@@ -1,7 +1,11 @@
 import { auth, googleProvider } from '../firebase'
+import localConfig from '~/config'
+
 export const strict = false
+
 export const state = () => ({
-  auth: null
+  auth: null,
+  config: localConfig
 })
 
 export const getters = {
@@ -10,6 +14,9 @@ export const getters = {
   },
   profile(state) {
     return state.auth
+  },
+  config(state) {
+    return state.config
   }
 }
 
@@ -37,11 +44,26 @@ export const actions = {
   async SIGN_OUT({ commit }) {
     await auth.signOut()
     commit('SET_AUTH', null)
+  },
+  FETCH_SERVER_CONFIG({ commit }) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const config = (await this.$axios.$get('/config')).config
+        commit('SET_CONFIG', config)
+        resolve(config)
+      } catch (e) {
+        if (e.response) e.message = e.response.data.message
+        reject(e)
+      }
+    })
   }
 }
 
 export const mutations = {
   SET_AUTH(state, data) {
     state.auth = data
+  },
+  SET_CONFIG(state, serverConfig) {
+    state.config = { ...localConfig, ...serverConfig }
   }
 }

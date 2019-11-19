@@ -10,6 +10,11 @@ const init = store =>
   })
 
 export default async ({ store }) => {
-  await init(store)
+  try {
+    await store.dispatch('FETCH_SERVER_CONFIG')
+    await init(store)
+  } catch (e) {
+    console.log(e)
+  }
   document.getElementById('preloader').outerHTML = ''
 }
