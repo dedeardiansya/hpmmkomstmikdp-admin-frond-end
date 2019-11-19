@@ -40,6 +40,7 @@ import CreateBlogModal from '~/components/collections/blog/AppCreateBlogModal'
 import BlogLists from '~/components/collections/blog/AppBlogLists'
 import SearchBlog from '~/components/collections/blog/AppSearchBlog'
 export default {
+  middleware: 'auth',
   layout: 'app',
   components: {
     CreateBlogModal,

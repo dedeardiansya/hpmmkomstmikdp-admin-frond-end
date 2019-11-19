@@ -47,7 +47,7 @@ export default {
         confirmButtonClass: 'btn btn-danger',
         cancelButtonClass: 'btn btn-primary'
       })
-        .then(() => this.$store.dispatch('SIGN_OUT'))
+        .then(() => this.$store.dispatch('auth/SIGN_OUT'))
         .then(() => {
           this.$router.push('/login')
         })

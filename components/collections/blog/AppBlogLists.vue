@@ -40,8 +40,8 @@ export default {
   },
   methods: {
     async infiniteHandler($state) {
-      if (!this.authToken)
-        this.authToken = await this.$store.getters.profile.getIdToken(true)
+      const user = this.$store.getters['auth/currentUser']
+      if (!this.authToken) this.authToken = await user.getIdToken(true)
       const url = `/admin/blog?limit=4&offset=${this.blogs.length}&category=${this.category}`
       this.$axios.setToken(this.authToken, 'Bearer')
       this.$axios

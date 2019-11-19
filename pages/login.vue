@@ -54,7 +54,7 @@ export default {
     signIn() {
       this.loading = true
       this.$store
-        .dispatch('LOGIN')
+        .dispatch('auth/SIGN_IN_WITH_GOOGLE')
         .then(() => {
           this.$router.push('/')
           this.loading = false
