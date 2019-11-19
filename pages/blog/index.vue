@@ -3,7 +3,10 @@
     <div class="col-xl-8">
       <div class="kt-portlet kt-portlet--height-fluid">
         <div class="kt-portlet__head">
-          <div class="kt-portlet__head-toolbar">
+          <div class="kt-portlet__head-toolbar mr-3">
+            <h3 class="m-auto font-weight-bold">BLOG</h3>
+          </div>
+          <div class="kt-portlet__head-toolbar mr-auto">
             <ul
               class="nav nav-pills nav-pills-sm nav-pills-label nav-pills-bold"
             >
