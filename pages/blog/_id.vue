@@ -70,6 +70,7 @@
             <div class="form-group">
               <label>Description</label
               ><textarea
+                v-model="blog.description"
                 placeholder="Description"
                 class="form-control"
               ></textarea>
