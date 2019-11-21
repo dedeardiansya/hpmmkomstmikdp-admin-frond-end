@@ -95,7 +95,6 @@
 <script>
 import FroalaEditor from '~/components/elements/FroalaEditor'
 import UpdateHero from '~/components/collections/blog/AppUpdateHero'
-import { getDate, formatDate } from '@/utils'
 export default {
   layout: 'app',
   middleware: 'auth',
@@ -114,7 +113,6 @@ export default {
         'Bearer ' + (await store.getters['auth/currentUser'].getIdToken(true))
       $axios.setToken(authToken)
       const blog = (await $axios.$get('/admin/blog/' + params.id)).blog
-      blog.createdAt = formatDate(getDate(blog.createdAt))
       return { blog }
     } catch (e) {
       error({ statusCode: 404 })

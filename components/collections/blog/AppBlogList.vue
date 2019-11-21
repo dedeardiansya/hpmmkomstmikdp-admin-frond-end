@@ -66,7 +66,6 @@
 </template>
 <script>
 import Placeholder from '@/assets/img/placeholder.svg'
-import { getDate } from '@/utils'
 export default {
   props: {
     blog: {
@@ -83,7 +82,7 @@ export default {
   },
   computed: {
     createdAt() {
-      return getDate(this.blog.createdAt).toLocaleString('id-ID', {
+      return new Date(this.blog.createdAt).toLocaleString('id-ID', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
