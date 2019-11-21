@@ -1,11 +1,10 @@
 import { auth } from '~/firebase'
-import { getDate } from '@/utils'
 
 export const state = () => ({ blogs: [], category: '' })
 
 export const getters = {
   blogs(state) {
-    return state.blogs.sortBy(o => getDate(o.createdAt)).reverse()
+    return state.blogs.sortBy(o => new Date(o.createdAt)).reverse()
   },
   category(state) {
     return state.category
