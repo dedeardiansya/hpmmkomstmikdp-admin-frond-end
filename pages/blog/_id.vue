@@ -82,6 +82,12 @@
             <div class="form-group">
               <button
                 class="btn btn-label-primary btn-wide"
+                :class="
+                  loading
+                    ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                    : ''
+                "
+                :disabled="loading"
                 @click="updateBlog"
               >
                 SIMPAN
@@ -102,6 +108,12 @@ export default {
   components: {
     UpdateHero,
     FroalaEditor
+  },
+  data() {
+    return {
+      loading: false,
+      error: ''
+    }
   },
   computed: {
     categories() {
@@ -124,11 +136,22 @@ export default {
       this.$set(this.blog, 'hero', hero)
     },
     async updateBlog() {
+      this.loading = true
+      this.error = ''
       try {
         await this.$store.dispatch('blog/UPDATE_BLOG', this.blog)
+        this.$swal({
+          text: 'Blog telah di update.',
+          icon: 'success'
+        })
       } catch (e) {
-        console.log(e)
+        this.error = e.message
+        this.$swal({
+          text: e.message,
+          icon: 'error'
+        })
       }
+      this.loading = false
     }
   }
 }
