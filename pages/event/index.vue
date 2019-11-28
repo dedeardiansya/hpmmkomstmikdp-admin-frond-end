@@ -9,6 +9,7 @@
           <create-event-modal class="kt-portlet__head-toolbar" />
         </div>
         <search-event></search-event>
+        <event-lists></event-lists>
       </div>
     </div>
   </div>
@@ -16,12 +17,14 @@
 <script>
 import CreateEventModal from '~/components/collections/event/AppCreateEventModal'
 import SearchEvent from '~/components/collections/event/AppSearchEvent'
+import EventLists from '~/components/collections/event/AppEventLists'
 export default {
   layout: 'app',
   middleware: 'auth',
   components: {
     CreateEventModal,
-    SearchEvent
+    SearchEvent,
+    EventLists
   }
 }
 </script>
