@@ -61,6 +61,10 @@ export default {
         return
       }
       try {
+        this.$axios.setToken(
+          await this.$store.getters['auth/currentUser'].getIdToken(true),
+          'Bearer'
+        )
         const { results } = await this.$axios.$get(
           '/admin/event/search?value=' + this.search
         )
