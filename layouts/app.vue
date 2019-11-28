@@ -22,6 +22,14 @@
         >
           <svg-icon-cipboard-list />
         </sidebar-item>
+        <sidebar-item
+          :link="{
+            name: 'Event',
+            path: '/event'
+          }"
+        >
+          <svg-icon-book-open />
+        </sidebar-item>
       </template>
     </sidebar>
     <div class="layout-main">
