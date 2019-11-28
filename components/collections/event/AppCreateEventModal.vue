@@ -80,11 +80,13 @@ export default {
       this.$set(this.form, 'title', '')
       this.hideModal()
     },
-    createEvent(data) {
+    async createEvent(data) {
       this.loading = true
       this.error = ''
       try {
+        const { event } = await this.$store.dispatch('event/CREATE_EVENT', data)
         this.resetModal()
+        console.log(event)
       } catch (e) {
         this.error = e.message
       }
