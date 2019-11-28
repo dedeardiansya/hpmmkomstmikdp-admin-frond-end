@@ -42,7 +42,7 @@
             &nbsp;
             <router-link
               class="btn btn-sm btn-label-info"
-              :to="'/blog/' + event.id"
+              :to="'/event/' + event.id"
               >EDIT</router-link
             >
             &nbsp;
