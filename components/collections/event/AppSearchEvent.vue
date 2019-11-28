@@ -55,13 +55,16 @@ export default {
     handleClickOutside() {
       this.open = false
     },
-    handleSearch() {
+    async handleSearch() {
       if (!this.search) {
         this.results = []
         return
       }
       try {
-        this.results = []
+        const { results } = await this.$axios.$get(
+          '/admin/event/search?value=' + this.search
+        )
+        this.results = results
         this.open = true
       } catch (e) {}
       if (!this.search) {
