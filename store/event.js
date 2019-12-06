@@ -48,10 +48,8 @@ export const actions = {
     return new Promise(async (resolve, reject) => {
       try {
         this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
-        const data = (await this.$axios.$put(
-          `/admin/event/${payload.id}/public`,
-          payload
-        )).event
+        const url = `/admin/event/${payload.id}/public`
+        const data = (await this.$axios.$put(url, payload)).event
         commit('UPDATE_EVENT', data)
         resolve(data)
       } catch (e) {
