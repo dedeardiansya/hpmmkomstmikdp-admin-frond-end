@@ -30,6 +30,14 @@
         >
           <svg-icon-book-open />
         </sidebar-item>
+        <sidebar-item
+          :link="{
+            name: 'Anggota',
+            path: '/anggota'
+          }"
+        >
+          <svg-icon-user />
+        </sidebar-item>
       </template>
     </sidebar>
     <div class="layout-main">
