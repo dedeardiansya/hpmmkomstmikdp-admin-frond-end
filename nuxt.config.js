@@ -22,7 +22,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
-  loading: { color: '#fff' },
+  loading: { color: '#5d78ff' },
 
   css: [
     '~/assets/fonts/poppins/css/poppins.css',
