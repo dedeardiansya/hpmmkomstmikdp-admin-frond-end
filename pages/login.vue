@@ -55,7 +55,10 @@ export default {
       this.loading = true
       this.$store
         .dispatch('auth/SIGN_IN_WITH_GOOGLE')
-        .then(() => {
+        .then(async () => {
+          try {
+            await this.$store.dispatch('anggota/FETCH_ANGGOTA')
+          } catch (e) {}
           this.$router.push('/')
           this.loading = false
         })

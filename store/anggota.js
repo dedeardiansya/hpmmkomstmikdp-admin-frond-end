@@ -23,6 +23,22 @@ export const actions = {
         reject(e)
       }
     })
+  },
+  FETCH_ANGGOTA({ commit }) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
+        const { members } = await this.$axios.$get('/admin/member')
+        members.forEach(member => {
+          console.log(member)
+          commit('SET_ANGGOTA', member)
+        })
+        resolve(members)
+      } catch (e) {
+        if (e.response) e.message = e.response.data.message
+        reject(e)
+      }
+    })
   }
 }
 
