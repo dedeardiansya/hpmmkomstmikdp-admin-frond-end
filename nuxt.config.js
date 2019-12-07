@@ -37,6 +37,7 @@ export default {
   plugins: [
     '~/plugins/ClientInit',
     '~/plugins/VueSweetalert2',
+    '~/plugins/VuePaginate',
     '~/plugins/SvgIcons',
     '~/plugins/Sidebar'
   ],
