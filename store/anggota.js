@@ -39,11 +39,36 @@ export const actions = {
         reject(e)
       }
     })
+  },
+  UPDATE_AVATAR({ commit }, payload) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
+        const { member } = await this.$axios.$put(
+          `admin/member/avatar/${payload.id}`,
+          payload.form,
+          { onUploadProgress: payload.onUploadProgress }
+        )
+        commit('UPDATE_ANGGOTA', member)
+        resolve(member.avatar)
+      } catch (e) {
+        if (e.response) e.message = e.response.data.message
+        reject(e)
+      }
+    })
   }
 }
 
 export const mutations = {
   SET_ANGGOTA(state, data) {
     state.anggota = [data, ...state.anggota]
+  },
+  UPDATE_ANGGOTA(state, data) {
+    const anggotas = []
+    state.anggota.forEach(anggota => {
+      if (anggota.id === data.id) anggota = data
+      anggotas.push(anggota)
+    })
+    state.anggota = anggotas
   }
 }
