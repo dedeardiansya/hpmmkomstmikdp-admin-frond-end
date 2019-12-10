@@ -8,17 +8,20 @@
           </div>
           <create-anggota-modal></create-anggota-modal>
         </div>
+        <anggota-lists></anggota-lists>
       </div>
     </div>
   </div>
 </template>
 <script>
 import CreateAnggotaModal from '~/components/collections/anggota/AppCreateAnggotaModal'
+import AnggotaLists from '~/components/collections/anggota/AppAnggotaLists'
 export default {
   layout: 'app',
   middleware: 'auth',
   components: {
-    CreateAnggotaModal
+    CreateAnggotaModal,
+    AnggotaLists
   }
 }
 </script>
