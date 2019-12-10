@@ -56,6 +56,22 @@ export const actions = {
         reject(e)
       }
     })
+  },
+  UPDATE_ANGGOTA({ commit }, payload) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
+        const { member } = await this.$axios.$put(
+          `admin/member/${payload.id}`,
+          payload
+        )
+        commit('UPDATE_ANGGOTA', member)
+        resolve(member)
+      } catch (e) {
+        if (e.response) e.message = e.response.data.message
+        reject(e)
+      }
+    })
   }
 }
 
