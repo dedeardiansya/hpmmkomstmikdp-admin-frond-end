@@ -3,9 +3,9 @@
     <div class="container-fluid">
       <div class="kt-input-icon kt-input-icon--right bg-light mb-4">
         <input
+          v-model="search"
           type="text"
           placeholder="Search..."
-          v-model="search"
           class="form-control form-control-lg bg-transparent border-0"
         />
         <span class="kt-input-icon__icon kt-input-icon__icon--right"
@@ -48,14 +48,14 @@ export default {
       results: []
     }
   },
-  watch: {
-    search() {
-      this.handleSearch()
-    }
-  },
   computed: {
     anggota() {
       return this.$store.getters['anggota/anggota'].sortBy(o => o.cadreYear)
+    }
+  },
+  watch: {
+    search() {
+      this.handleSearch()
     }
   },
   created() {
