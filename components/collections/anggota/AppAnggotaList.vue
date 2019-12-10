@@ -46,7 +46,7 @@
         </div>
         <div class="py-1">
           <button
-            class="btn btn-primary btn-sm btn-block"
+            class="btn btn-primary btn-sm"
             :class="
               loading
                 ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
@@ -56,6 +56,18 @@
             @click="edit(anggota)"
           >
             EDIT
+          </button>
+          <button
+            class="btn btn-sm btn-label-danger"
+            :class="
+              deleteLoading
+                ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                : ''
+            "
+            :disabled="deleteLoading"
+            @click="deleteAnggota(anggota)"
+          >
+            DELETE
           </button>
         </div>
       </div>
@@ -77,6 +89,7 @@ export default {
   },
   data() {
     return {
+      deleteLoading: false,
       loading: false,
       error: ''
     }
@@ -105,6 +118,29 @@ export default {
         })
       }
       this.loading = false
+    },
+    deleteAnggota(data) {
+      this.$swal({
+        text: 'Anda yakin ingin menghapus anggota ini?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batalkan',
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+          this.deleteLoading = true
+          this.$store
+            .dispatch('anggota/DELETE_ANGGOTA', data)
+            .then(() => {
+              this.deleteLoading = false
+            })
+            .catch(e => {
+              this.deleteLoading = false
+              this.$swal({ type: 'error', text: e.message })
+            })
+        }
+      })
     }
   }
 }

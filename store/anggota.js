@@ -72,6 +72,19 @@ export const actions = {
         reject(e)
       }
     })
+  },
+  DELETE_ANGGOTA({ commit }, payload) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
+        const data = await this.$axios.$delete(`/admin/member/${payload.id}`)
+        commit('REMOVE_ANGGOTA', payload)
+        resolve(data)
+      } catch (e) {
+        if (e.response) e.message = e.response.data.message
+        reject(e)
+      }
+    })
   }
 }
 
@@ -84,6 +97,13 @@ export const mutations = {
     state.anggota.forEach(anggota => {
       if (anggota.id === data.id) anggota = data
       anggotas.push(anggota)
+    })
+    state.anggota = anggotas
+  },
+  REMOVE_ANGGOTA(state, data) {
+    const anggotas = []
+    state.anggota.forEach(anggota => {
+      if (anggota.id !== data.id) anggotas.push(anggota)
     })
     state.anggota = anggotas
   }
