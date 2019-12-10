@@ -30,7 +30,6 @@ export const actions = {
         this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
         const { members } = await this.$axios.$get('/admin/member')
         members.forEach(member => {
-          console.log(member)
           commit('SET_ANGGOTA', member)
         })
         resolve(members)
