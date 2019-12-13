@@ -22,6 +22,13 @@ export default {
   components: {
     CreateAnggotaModal,
     AnggotaLists
+  },
+  async asyncData({ store, error }) {
+    try {
+      await store.dispatch('anggota/FETCH_ANGGOTA')
+    } catch (e) {
+      error({ statusCode: 500 })
+    }
   }
 }
 </script>

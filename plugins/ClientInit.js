@@ -31,10 +31,7 @@ import { auth } from '../firebase'
 const init = store =>
   new Promise(resolve => {
     const app = auth.onAuthStateChanged(async user => {
-      store.commit('auth/SET_AUTH', user)
-      try {
-        if (user) await store.dispatch('anggota/FETCH_ANGGOTA')
-      } catch (e) {}
+      await store.commit('auth/SET_AUTH', user)
       app()
       resolve()
     })
