@@ -24,9 +24,10 @@ export const actions = {
       }
     })
   },
-  FETCH_ANGGOTA({ commit }) {
+  FETCH_ANGGOTA({ commit, getters }) {
     return new Promise(async (resolve, reject) => {
       try {
+        if (getters.anggota.length) return resolve(getters.anggota)
         this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
         const { members } = await this.$axios.$get('/admin/member')
         members.forEach(member => {
