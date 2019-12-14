@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="hero-wrapper" :style="'background-image: url(' + heroImg + ')'">
+    <div :style="'background-image: url(' + heroImg + ')'" class="hero-wrapper">
       <div class="form-hero card">
         <input
           ref="hero"
+          @change="onChange($event.target.files[0])"
           type="file"
           name="hero"
           accept="image/png,image/jpeg"
-          @change="onChange($event.target.files[0])"
         />
         <div class="message">
           {{ uploadMessage }}
         </div>
-        <i class="progress" :style="'width:' + uploadPercentage + '%'" />
+        <i :style="'width:' + uploadPercentage + '%'" class="progress" />
       </div>
     </div>
   </div>

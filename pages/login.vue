@@ -1,9 +1,9 @@
 <template>
-  <div class="login-page" :style="'background-image: url(' + Background + ')'">
+  <div :style="'background-image: url(' + Background + ')'" class="login-page">
     <div class="container m-auto">
       <div class="row">
         <div class="col-md-5 m-auto">
-          <BlockUI class="kt-portlet" :loading="loading">
+          <BlockUI :loading="loading" class="kt-portlet">
             <div class="kt-portlet__body">
               <div class="kt-portlet__section text-center">
                 <img
@@ -13,9 +13,9 @@
                 />
                 <h3 class="title mb-5 font-weight-bold">Sign in To Admin</h3>
                 <button
+                  @click.prevent="signIn"
                   type="button"
                   class="btn btn-light btn-elevate"
-                  @click.prevent="signIn"
                 >
                   <svg-icon-google />
                   Sign in with Google

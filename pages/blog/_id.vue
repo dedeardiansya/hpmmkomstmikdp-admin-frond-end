@@ -10,9 +10,9 @@
         <div class="kt-portlet__body">
           <update-hero
             :id="blog.id"
-            class="kt-portlet__content"
             :hero="blog.hero"
             @hero-updated="updateHero"
+            class="kt-portlet__content"
           ></update-hero>
         </div>
         <div class="kt-portlet__body">
@@ -81,7 +81,6 @@
             </div>
             <div class="form-group">
               <button
-                class="btn btn-label-primary btn-wide"
                 :class="
                   loading
                     ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
@@ -89,6 +88,7 @@
                 "
                 :disabled="loading"
                 @click="updateBlog"
+                class="btn btn-label-primary btn-wide"
               >
                 SIMPAN
               </button>

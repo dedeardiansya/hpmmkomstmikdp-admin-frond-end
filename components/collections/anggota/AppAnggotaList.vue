@@ -38,15 +38,14 @@
           <input
             id="cadreYear"
             v-model="anggota.cadreYear"
+            @keypress="isNumber($event)"
             type="text"
             class="form-control form-control-sm"
             placeholder="Angkatan"
-            @keypress="isNumber($event)"
           />
         </div>
         <div class="py-1">
           <button
-            class="btn btn-primary btn-sm"
             :class="
               loading
                 ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
@@ -54,11 +53,11 @@
             "
             :disabled="loading"
             @click="edit(anggota)"
+            class="btn btn-primary btn-sm"
           >
             EDIT
           </button>
           <button
-            class="btn btn-sm btn-label-danger"
             :class="
               deleteLoading
                 ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
@@ -66,6 +65,7 @@
             "
             :disabled="deleteLoading"
             @click="deleteAnggota(anggota)"
+            class="btn btn-sm btn-label-danger"
           >
             DELETE
           </button>

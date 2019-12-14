@@ -1,7 +1,7 @@
 <template>
   <div
-    class="app-layout"
     :class="{ 'hide-sidebar': !this.$sidebar.showSidebar }"
+    class="app-layout"
   >
     <sidebar-toggle />
     <sidebar>

@@ -4,8 +4,8 @@
       <div class="navbar-wrapper">
         <div class="left">
           <button
-            class="btn btn-label-primary btn-icon mr-2"
             @click.prevent="$sidebar.displaySidebar(!$sidebar.showSidebar)"
+            class="btn btn-label-primary btn-icon mr-2"
           >
             <svg-icon-angle-double-left v-if="$sidebar.showSidebar" />
             <svg-icon-angle-double-right v-else />
@@ -24,8 +24,8 @@
             <i class="simple-icon-magnifier"></i>
           </button>
           <button
-            class="btn btn-label-danger btn-icon ml-2"
             @click.prevent="signOut"
+            class="btn btn-label-danger btn-icon ml-2"
           >
             <i class="simple-icon-logout"></i>
           </button>

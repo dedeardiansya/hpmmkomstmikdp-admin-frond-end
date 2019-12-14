@@ -2,9 +2,9 @@
   <li class="sidebar-item">
     <router-link
       :to="link.path"
-      class="sidebar-link"
       :target="link.target"
       :href="link.path"
+      class="sidebar-link"
     >
       <div class="sidebar-link-wrapper">
         <span class="sidebar-link-icon">

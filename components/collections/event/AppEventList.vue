@@ -28,7 +28,6 @@
               {{ event.description }}
             </p>
             <button
-              class="btn btn-sm btn-label-primary"
               :class="
                 updatePublicLoading
                   ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
@@ -36,18 +35,18 @@
               "
               :disabled="updatePublicLoading"
               @click="updateEventPublic({ id: event.id, value: !event.public })"
+              class="btn btn-sm btn-label-primary"
             >
               MAKE {{ !event.public ? 'PUBLIC' : 'PRIVATE' }}
             </button>
             &nbsp;
             <router-link
-              class="btn btn-sm btn-label-info"
               :to="'/event/' + event.id"
+              class="btn btn-sm btn-label-info"
               >EDIT</router-link
             >
             &nbsp;
             <button
-              class="btn btn-sm btn-label-danger"
               :class="
                 deleteLoading
                   ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
@@ -55,6 +54,7 @@
               "
               :disabled="deleteLoading"
               @click="deleteEvent(event.id)"
+              class="btn btn-sm btn-label-danger"
             >
               DELETE
             </button>

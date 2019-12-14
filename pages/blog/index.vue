@@ -12,19 +12,19 @@
             >
               <li class="nav-item">
                 <a
-                  class="nav-link"
                   :class="category ? '' : 'active'"
-                  href="#"
                   @click.prevent="setCategory('')"
+                  class="nav-link"
+                  href="#"
                   >Semua</a
                 >
               </li>
               <li v-for="(item, i) in categories" :key="i" class="nav-item">
                 <a
-                  class="nav-link"
                   :class="category == item ? 'active' : ''"
-                  href="#"
                   @click.prevent="setCategory(item)"
+                  class="nav-link"
+                  href="#"
                   >{{ item }}</a
                 >
               </li>

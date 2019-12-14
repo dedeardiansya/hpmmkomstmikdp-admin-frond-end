@@ -44,7 +44,9 @@ export const actions = {
     return new Promise(async (resolve, reject) => {
       try {
         this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
-        const { member } = await this.$axios.$put(
+        const {
+          member
+        } = await this.$axios.$put(
           `admin/member/avatar/${payload.id}`,
           payload.form,
           { onUploadProgress: payload.onUploadProgress }

@@ -1,11 +1,11 @@
 <template>
   <div
-    class="toggle-open-sidebar p-2 bg-white shadow"
     :class="{ 'show-toggle': showToggle }"
+    class="toggle-open-sidebar p-2 bg-white shadow"
   >
     <button
-      class="btn btn-label-primary btn-icon btn-sm"
       @click="$sidebar.displaySidebar(!$sidebar.showSidebar)"
+      class="btn btn-label-primary btn-icon btn-sm"
     >
       <svg-icon-angle-double-right />
     </button>

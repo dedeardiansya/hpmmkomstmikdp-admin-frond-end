@@ -4,7 +4,7 @@
     <div class="avatar-action">
       <button class="btn btn-label-primary btn-sm">
         {{ uploadMessage }}
-        <input type="file" @change="onChange($event.target.files[0])" />
+        <input @change="onChange($event.target.files[0])" type="file" />
       </button>
     </div>
   </div>

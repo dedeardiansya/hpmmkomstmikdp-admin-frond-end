@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn btn-primary btn-wide" @click="showModal">
+    <button @click="showModal" class="btn btn-primary btn-wide">
       Buat blog baru
     </button>
     <b-modal
@@ -46,7 +46,6 @@
           <hr />
           <div class="py-3">
             <button
-              class="btn btn-label-primary mr-1"
               :class="
                 loading
                   ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
@@ -54,13 +53,14 @@
               "
               :disabled="loading"
               @click="createBlog(form)"
+              class="btn btn-label-primary mr-1"
             >
               Tambah
             </button>
             <button
-              class="btn btn-label-danger"
               :disabled="loading"
               @click="hideModal"
+              class="btn btn-label-danger"
             >
               Batal
             </button>

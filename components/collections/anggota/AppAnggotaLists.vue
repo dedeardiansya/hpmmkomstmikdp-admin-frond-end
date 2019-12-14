@@ -12,7 +12,7 @@
           ><span><i class="simple-icon-magnifier"></i></span
         ></span>
       </div>
-      <paginate tag="div" class="row" name="anggota" :list="results" :per="12">
+      <paginate :list="results" :per="12" tag="div" class="row" name="anggota">
         <app-anggota-list
           v-for="data in paginated('anggota')"
           :key="data.id"
@@ -22,13 +22,13 @@
       </paginate>
       <div class="kt-pagination kt-pagination--brand mt-4">
         <paginate-links
-          for="anggota"
-          show-step-links
           :limit="6"
           :classes="{
             ul: ['kt-pagination__links', 'mx-auto'],
             'li.active': 'kt-pagination__link--active'
           }"
+          for="anggota"
+          show-step-links
         ></paginate-links>
       </div>
     </div>

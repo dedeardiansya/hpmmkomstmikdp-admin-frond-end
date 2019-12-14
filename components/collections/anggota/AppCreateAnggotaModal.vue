@@ -1,6 +1,6 @@
 <template>
   <div class="my-auto">
-    <button class="btn btn-primary btn-wide" @click="showModal">
+    <button @click="showModal" class="btn btn-primary btn-wide">
       Buat anggota
     </button>
     <b-modal
@@ -56,10 +56,10 @@
             <input
               id="cadreYear"
               v-model="form.cadreYear"
+              @keypress="isNumber($event)"
               type="text"
               class="form-control"
               placeholder="Angkatan"
-              @keypress="isNumber($event)"
             />
           </div>
           <div class="py-3">
@@ -68,9 +68,9 @@
               <input
                 id="customFile"
                 ref="avatar"
+                @change="avatar = $event.target.files[0]"
                 type="file"
                 class="custom-file-input"
-                @change="avatar = $event.target.files[0]"
               />
               <label class="custom-file-label" for="customFile"
                 >Choose file</label
@@ -80,7 +80,6 @@
           <hr />
           <div class="py-3">
             <button
-              class="btn btn-label-primary mr-1"
               :class="
                 loading
                   ? 'active kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
@@ -88,13 +87,14 @@
               "
               :disabled="loading"
               @click="createBlog(form)"
+              class="btn btn-label-primary mr-1"
             >
               Tambah
             </button>
             <button
-              class="btn btn-label-danger"
               :disabled="loading"
               @click="hideModal"
+              class="btn btn-label-danger"
             >
               Batal
             </button>

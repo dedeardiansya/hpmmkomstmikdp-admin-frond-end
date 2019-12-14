@@ -3,8 +3,8 @@
     <div class="sidebar-action">
       <div class="action-wrapper">
         <button
-          class="btn btn-label-primary btn-lg btn-icon"
           @click="closeSidebar"
+          class="btn btn-label-primary btn-lg btn-icon"
         >
           <svg-icon-angle-double-left />
         </button>

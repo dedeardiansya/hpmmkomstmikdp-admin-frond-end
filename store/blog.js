@@ -51,10 +51,9 @@ export const actions = {
     return new Promise(async (resolve, reject) => {
       try {
         this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
-        const data = (await this.$axios.$put(
-          `/admin/blog/${payload.id}/public`,
-          payload
-        )).blog
+        const data = (
+          await this.$axios.$put(`/admin/blog/${payload.id}/public`, payload)
+        ).blog
         commit('UPDATE_BLOG', data)
         resolve(data)
       } catch (e) {
@@ -67,11 +66,13 @@ export const actions = {
     return new Promise(async (resolve, reject) => {
       try {
         this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
-        const data = (await this.$axios.$put(
-          `admin/blog/${payload.id}/hero`,
-          payload.form,
-          { onUploadProgress: payload.onUploadProgress }
-        )).blog
+        const data = (
+          await this.$axios.$put(
+            `admin/blog/${payload.id}/hero`,
+            payload.form,
+            { onUploadProgress: payload.onUploadProgress }
+          )
+        ).blog
         commit('UPDATE_BLOG', data)
         resolve(data)
       } catch (e) {
@@ -84,10 +85,9 @@ export const actions = {
     return new Promise(async (resolve, reject) => {
       try {
         this.$axios.setToken(await auth.currentUser.getIdToken(true), 'Bearer')
-        const data = (await this.$axios.$put(
-          `admin/blog/${payload.id}`,
-          payload
-        )).blog
+        const data = (
+          await this.$axios.$put(`admin/blog/${payload.id}`, payload)
+        ).blog
         commit('UPDATE_BLOG', data)
         resolve(data)
       } catch (e) {
