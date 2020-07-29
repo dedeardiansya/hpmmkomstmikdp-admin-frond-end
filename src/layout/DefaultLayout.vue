@@ -18,6 +18,7 @@ export default {
 <style lang="scss">
 body {
   padding-left: 80px;
+  font-size: 16px;
   @include media-breakpoint-down(md) {
     padding-left: 0;
     padding-top: 80px;
@@ -30,7 +31,6 @@ body {
   @include media-breakpoint-down(md) {
     min-height: calc(100vh - 80px);
     padding-left: 0;
-    padding-top: 80px;
   }
 }
 </style>

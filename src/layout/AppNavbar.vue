@@ -19,10 +19,14 @@
           </a>
         </li>
         <li class="nav-item">
-          <router-link to="logout" class="nav-link text-danger">
+          <a
+            href="/logout"
+            @click.prevent="logout"
+            class="nav-link text-danger"
+          >
             <i :class="`feather-log-out`"></i>
             <span class="overlay-text">Logout</span>
-          </router-link>
+          </a>
         </li>
       </ul>
     </div>
@@ -30,6 +34,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { LOGOUT } from '../store/action.types'
 export default {
   data() {
     return {
@@ -42,14 +48,27 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapGetters(['loading', 'error', 'auth'])
+  },
   methods: {
     clickOutside() {
       if (!this.navclose) this.navclose = true
+    },
+    logout() {
+      this.$store.dispatch(LOGOUT)
     }
   },
   watch: {
     $route(val, old) {
       if (val.path !== old.path) this.navclose = true
+    },
+    auth: {
+      deep: true,
+      immediate: true,
+      handler(val) {
+        if (!val) this.$router.push('/login')
+      }
     }
   }
 }

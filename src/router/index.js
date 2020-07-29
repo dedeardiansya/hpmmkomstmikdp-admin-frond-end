@@ -7,7 +7,8 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes,
-  linkActiveClass: 'active'
+  linkActiveClass: 'active',
+  base: '/admin/'
 })
 
 export default router
