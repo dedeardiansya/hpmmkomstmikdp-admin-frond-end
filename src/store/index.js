@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { vuexfireMutations } from 'vuexfire'
 
-import auth from './modules/auth.module'
-import shared from './modules/shared.module'
+import config from './modules/config'
+import theme from './modules/theme'
+import transition from './modules/transition'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  mutations: {
-    ...vuexfireMutations
-  },
-  modules: { auth, shared }
+  modules: {
+    config,
+    theme,
+    transition
+  }
 })
