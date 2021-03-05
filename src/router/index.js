@@ -4,7 +4,6 @@ import store from '@/store'
 
 import HomePage from '@/views/Home'
 import AboutPage from '@/views/About'
-import PortfolioPage from '@/views/Portfolio'
 import ContactPage from '@/views/Contact'
 import GalleryPage from '@/views/Gallery'
 
@@ -20,11 +19,6 @@ const routes = [
     path: '/about',
     name: AboutPage.name,
     component: AboutPage
-  },
-  {
-    path: '/portfolio',
-    name: PortfolioPage.name,
-    component: PortfolioPage
   },
   {
     path: '/contact',
