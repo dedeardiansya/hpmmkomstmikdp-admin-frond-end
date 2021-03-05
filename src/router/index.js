@@ -6,6 +6,7 @@ import HomePage from '@/views/Home'
 import AboutPage from '@/views/About'
 import PortfolioPage from '@/views/Portfolio'
 import ContactPage from '@/views/Contact'
+import GalleryPage from '@/views/Gallery'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/contact',
     name: ContactPage.name,
     component: ContactPage
+  },
+  {
+    path: '/gellery',
+    name: GalleryPage.name,
+    component: GalleryPage
   }
 ]
 
