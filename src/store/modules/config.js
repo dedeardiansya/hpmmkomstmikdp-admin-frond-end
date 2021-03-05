@@ -1,5 +1,5 @@
 // import { JSON_DB_URL } from '@/config'
-import db from '../../../db.example.json'
+import db from '../../../db.json'
 
 const state = {
   config: {}
