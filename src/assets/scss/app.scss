@@ -48,16 +48,35 @@ body {
   }
 }
 
+
 body {
   padding-left: 60px;
   background-color: $gray-900;
+  ::selection {
+    color: $white;
+    background: $primary;
+  }
+  ::-moz-selection {
+    color: $white;
+    background: $primary;
+  }
   @include media-breakpoint-down(md) {
     padding-left: 0px;
     padding-bottom: 60px;
   }
+  
+
   &.dark-mode {
     background-color: darken($gray-900, 5%);
     color: $gray-100;
+    ::selection {
+      color: $gray-900;
+      background: $primary;
+    }
+    ::-moz-selection {
+      color: $gray-900;
+      background: $primary;
+    }
   }
 }
 
@@ -296,6 +315,7 @@ body {
 // PageTitle
 .page-title {
   position: relative;
+  user-select: none;
   @include font-size(10rem);
   padding: 1em 0 0.5em;
   font-weight: $font-weight-bold;
