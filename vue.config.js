@@ -6,6 +6,7 @@ module.exports = {
       }
     }
   },
+  publicPath: process.env.NODE_ENV === 'production' ? '/hpmmdp/' : '/',
   chainWebpack(config) {
     const FILE_RE = /\.(vue|js|ts|svg)$/
     config.module.rule('svg').issuer(file => !FILE_RE.test(file))
