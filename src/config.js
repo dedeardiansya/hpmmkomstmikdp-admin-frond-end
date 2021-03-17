@@ -1,1 +1,1 @@
-export const JSON_DB_URL = 'https://my-json-server.typicode.com/dedeardiansya/hpmmdp/db'
+export const JSON_DB_URL = 'https://my-json-server.typicode.com/dedeardiansya/looping/db'

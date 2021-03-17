@@ -1,5 +1,5 @@
-import { JSON_DB_URL } from '@/config'
-// import db from '../../../db.json'
+// import { JSON_DB_URL } from '@/config'
+import db from '../../../db.json'
 
 const state = {
   config: {}
@@ -13,14 +13,15 @@ const getters = {
 
 const actions = {
   loadConfig({ commit }) {
-    return fetch(JSON_DB_URL)
-      .then(res => {
-        return res.json()
-      })
-      .then(data => {
-        commit('setConfig', data)
-        return data
-      })
+    commit('setConfig', db)
+    return db
+    // return fetch(JSON_DB_URL)
+    //   .then(res => {
+    //     return res.json()
+    //   })
+    //   .then(data => {
+    //     return data
+    //   })
   }
 }
 

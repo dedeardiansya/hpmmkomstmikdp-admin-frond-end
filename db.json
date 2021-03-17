@@ -8,22 +8,18 @@
     "light_mode": "LIGHT MODE"
   },
   "home": {
-    "title": "HOME",
+    "title": "LOOPING 17",
     "description": "My awesome web app.",
-    "app_name": "HPMM",
-    "app_title": "KOMISARIAT STMIK DIPANEGARA MAKASSAR",
-    "bg_url": "https://images.pexels.com/photos/2409681/pexels-photo-2409681.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1000",
+    "app_name": "LOOPING 17",
+    "app_title": "MASSENREMPULU TANA RIGALLA TANA RIABBUSUNGI",
+    "bg_url": "https://i.ibb.co/vdJPsnZ/looping-17.jpg",
     "socials": [{
         "label": "INSTAGRAM",
-        "url": "#"
+        "url": "https://www.instagram.com/looping_17/"
       },
       {
-        "label": "FACEBOOK",
-        "url": "#"
-      },
-      {
-        "label": "GITHUB",
-        "url": "#"
+        "label": "WHATSAPP",
+        "url": "https://api.whatsapp.com/send?phone=6281343912883&text=%3CChatMe%20%2F%3E"
       }
     ]
   },
@@ -31,9 +27,12 @@
     "label": "About.",
     "title": "ABOUT",
     "description": "no comment",
-    "name": "HPMM Kom. STMIK Dipanegara",
-    "paragraph": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa\n    quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Neque porro quisquam est, qui dolorem\n    ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore\n    magnam aliquam quaerat voluptatem.",
-    "img_url": "https://images.pexels.com/photos/1342650/pexels-photo-1342650.jpeg?auto=compress&cs=tinysrgb&h=500",
+    "name": "Looping 2017",
+    "paragraph": [
+      "Looping 2017 is one of the 'HPMM Komisariat STMIK Dipanegara' cadres.<br />The name Looping itself is taken from the programming term, namely repetition.",
+      "Looping 2017 adalah salah satu angkatan kader dari 'HPMM Komisariat STMIK Dipanegara'.<br/>Nama Looping itu sendiri diambil dari istilah dalam pemrograman yaitu perulangan."
+    ],
+    "img_url": "https://i.ibb.co/QH6N8wr/looping-17.jpg",
     "experience": false
   },
   "contact": {

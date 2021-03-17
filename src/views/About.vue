@@ -8,9 +8,7 @@
         </div>
         <div class="col-md-6 mb-3">
           <h5>{{ about.name }}</h5>
-          <p>
-            {{ about.paragraph }}
-          </p>
+          <p v-for="(paragraph, i) in about.paragraph" :key="i" v-html="paragraph" />
           <router-link :to="{ name: 'Contact' }" class="btn btn-dark">CONTACT</router-link>
         </div>
       </div>
